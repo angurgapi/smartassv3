@@ -1,0 +1,114 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 415px);
+
+  &__content {
+      width: 100%;
+  }
+}
+
+.btn {
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    &--primary {
+        height: 46px;
+        padding: 0 20px 0 20px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        color: #fff;
+        font-size: 24px;
+        text-decoration: none;
+        font-family: 'Josefin';
+        box-sizing: border-box;
+        background: linear-gradient(
+          63deg,
+          rgba(60, 13, 96, 1) 0%,
+          rgba(96, 10, 153, 1) 24%,
+          rgba(203, 168, 227, 1) 50%,
+          rgba(82, 6, 135, 1) 76%,
+          rgba(64, 6, 105, 1) 100%
+        );
+        background-size: 400%;
+        border-radius: 20px;
+        z-index: 1;
+    
+        &:hover {
+          animation: animate 8s linear infinite;
+        }
+        @media(max-width: 600px) {
+            font-size: 20px;
+        }
+      }
+ }
+
+
+ @keyframes animate {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 400%;
+    }
+  }
+
+
+
+.f-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 9px 0 rgb(0 0 0 / 8%), 0 1px 2px 0 rgb(0 0 0 / 4%);
+  &:hover {
+  box-shadow: 0 4px 9px 0 rgb(0 0 0 / 10%), 0 1px 4px 0 rgb(0 0 0 / 10%);
+  }
+}
+
+//margins
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+
+.bg-light {
+  background-color: #FFFADE;
+}
+
+.text-light {
+  color: #FFFADE;
+}
+
+.text-dark {
+  color: #202639;
+}
+
+.highlighted {
+  color: #4f3a85;
+  letter-spacing: 0.6px;
+}
+
+
+.modal-content {
+  padding: 35px 20px;
+}

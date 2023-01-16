@@ -1,0 +1,54 @@
+components:
+  language_switcher:
+    change_language: change language
+  theme_switcher:
+    theme: theme
+    change_theme: change theme
+
+pages:
+  index:
+    title: smartass
+    greeting: Hey smartass
+    time: Time to exercise your brain
+    comma: ''
+    reason_block: 
+      title: why even bother
+  404:
+    title: page not found
+  blank:
+    nav: blank
+    title: blank page
+    description: this is a blank page
+    just_blank_page_with_title: just blank page with title
+  post:
+    nav: post
+    title: post
+    description: this is a post page
+  test:
+    nav: test
+    title: testing
+    description: this is a test page
+    counter: counter
+    increment: increment
+    decrement: decrement
+    reset: reset
+    identity: identity
+    full_name: fullName
+  getting-started:
+    nav: getting started
+    title: getting started
+    description: this is a getting started page
+  games: 
+    title: games
+    nav: games
+    description: Brain training games
+    general: General
+    memory: Memory
+    math: Math
+banners:
+  welcome: hello, welcome to %{app_name}!
+others:
+  learn_more: learn more
+  copy: copy
+  enabled: enabled
+  disabled: disabled

@@ -1,0 +1,17 @@
+.landing-section {
+  width: 100%;
+  justify-content: center;
+  padding-top: 50px;
+  display: flex;
+  padding: 40px 18px 40px 18px;
+
+  &__inner {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+}
