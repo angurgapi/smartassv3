@@ -22,7 +22,6 @@ specifiers:
   js-yaml: ^4.1.0
   lint-staged: ^13.0.3
   nuxt: 3.0.0
-  nuxt-windicss: ^2.5.1
   pinia: ^2.0.23
   postcss: 8.4.14
   postcss-loader: ^7.0.0
@@ -63,7 +62,6 @@ devDependencies:
   js-yaml: 4.1.0
   lint-staged: 13.1.0
   nuxt: 3.0.0_u23turm2vsl6zvrayvc36vxnii
-  nuxt-windicss: 2.6.0_vite@3.0.0-beta.10
   pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
   postcss: 8.4.14
   postcss-loader: 7.0.2_yr6womevqv5t3aet2t3y7pv3ua
@@ -2975,30 +2973,6 @@ packages:
     dependencies:
       '@webassemblyjs/ast': 1.11.1
       '@xtuc/long': 4.2.2
-    dev: true
-
-  /@windicss/config/1.8.8:
-    resolution: {integrity: sha512-kNas/zMkwsDFMcJPmHoPDJlQi1MHvYwx8BSxo9JKcbCW7Gaj8Rg2CnEImX5YdT+ZcFQqQ+kUn0Vi/ScsAxhGEw==}
-    dependencies:
-      debug: 4.3.4
-      jiti: 1.16.0
-      windicss: 3.5.6
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@windicss/plugin-utils/1.8.8:
-    resolution: {integrity: sha512-a+npbTKmdrAvnMqzVJvyPa29xyNcPaSkt6qQpgWY9m0WyVlYd9BM8V0+cbqt279fTlvlaZpUs9dqmilB1PUH6g==}
-    dependencies:
-      '@antfu/utils': 0.5.2
-      '@windicss/config': 1.8.8
-      debug: 4.3.4
-      fast-glob: 3.2.12
-      magic-string: 0.26.7
-      micromatch: 4.0.5
-      windicss: 3.5.6
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@xtuc/ieee754/1.2.0:
@@ -7872,29 +7846,6 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /nuxt-windicss/2.6.0_vite@3.0.0-beta.10:
-    resolution: {integrity: sha512-A4RyyDad6QM0XdgTsjmvQRR17jLF1ZnpMUEUdFjbfO9sgDuyTWtlmfCVtBW6wAIPavGZYD49cem75vyI7sD10g==}
-    dependencies:
-      '@nuxt/kit': 3.0.0
-      '@windicss/config': 1.8.8
-      '@windicss/plugin-utils': 1.8.8
-      consola: 2.15.3
-      defu: 6.1.1
-      fs-extra: 10.1.0
-      h3: 1.0.1
-      listhen: 1.0.1
-      pathe: 1.0.0
-      read-cache: 1.0.0
-      sirv: 2.0.2
-      vite-plugin-windicss: 1.8.8_vite@3.0.0-beta.10
-      windicss: 3.5.6
-      windicss-analysis: 0.3.5
-      windicss-webpack-plugin: 1.7.7
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-      - vite
-    dev: true
 
   /nuxt/3.0.0_u23turm2vsl6zvrayvc36vxnii:
     resolution: {integrity: sha512-RNlD78uv04ZiXWmlx9f1tnJfrqsYAWHU+4gbgOTQpIBmQzHWPWiox+fm/1m93iKfEd5sJi9TJUoXX5yBObVZYw==}

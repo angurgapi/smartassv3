@@ -19,7 +19,7 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .game-card {
-  width: 250px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   min-height: 250px;

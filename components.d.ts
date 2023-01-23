@@ -28,5 +28,6 @@ declare module '@vue/runtime-core' {
     'IconUil:times': typeof import('~icons/uil/times')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Vue3Lottie: typeof import('vue3-lottie')['Vue3Lottie']
   }
 }

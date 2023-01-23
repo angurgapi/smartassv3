@@ -14,16 +14,13 @@ export default defineNuxtConfig({
 
   // css
   css: [
-    'virtual:windi-base.css',
-    'virtual:windi-components.css',
-    'virtual:windi-utilities.css',
     '~/assets/sass/vendor.scss',
     '~/assets/sass/app.scss',
     '~/assets/sass/modules/app.scss',
   ],
 
   // plugins
-  plugins: ['~/plugins/navbar.ts'],
+  plugins: ['~/plugins/navbar.ts', '~/plugins/Vue3lottie.client.ts'],
 
   // build
   build: {
@@ -37,7 +34,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/content',
     '@vueuse/nuxt',
-    'nuxt-windicss',
   ],
 
   // experimental features
@@ -82,20 +78,6 @@ export default defineNuxtConfig({
   // vueuse
   vueuse: {
     ssrHandlers: true,
-  },
-
-  // windicss
-  windicss: {
-    analyze: {
-      analysis: {
-        interpretUtilities: false,
-      },
-      server: {
-        port: 4000,
-        open: false,
-      },
-    },
-    scan: true,
   },
 
   // content

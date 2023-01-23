@@ -3,69 +3,23 @@
     class="sound-btn"
     :class="{ 'sound-btn--lit': isLit }"
     :style="`background-color:${btn.color}`"
-    @click="handleClick"
+    @click="$emit('click', btn.value)"
   />
 </template>
 
-<!-- <script>
-export default {
-  name: 'SoundBtn',
-  props: {
-    btn: {
-      type: Object,
-      required: true
-    }
-  },
-  data: () => ({
-    isLit: false
-  }),
-  methods: {
-    handleClick() {
-      this.$emit('click', this.btn.value)
-      this.playBtn()
-    },
-
-    playBtn() {
-      this.isLit = true
-      let audio = new Audio(`/sounds/${this.btn.value}.mp3`)
-      audio.play()
-      setTimeout(() => {
-        this.isLit = false
-      }, 500)
-    }
-  }
-}
-</script> -->
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { SoundBtn } from '~~/types/SoundBtn'
 
 const props = defineProps<{
   btn: SoundBtn
+  isLit: boolean
 }>()
 
 const emit = defineEmits<{
   (e: 'click', value: number): void
 }>()
 // const emit = defineEmits(['click'])
-
-const isLit = ref(false)
-
-const playBtn = () => {
-  isLit.value = true
-  const audio = new Audio(`/sounds/${props.btn.value}.mp3`)
-  audio.play()
-  setTimeout(() => {
-    isLit.value = false
-  }, 500)
-}
-
-const handleClick = () => {
-  emit('click', props.btn.value)
-  playBtn()
-}
-
-defineExpose(playBtn)
 </script>
 
 <style lang="scss" scoped>

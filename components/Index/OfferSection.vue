@@ -1,11 +1,14 @@
 <template>
-  <section class="landing-section text-light">
+  <section class="landing-section offer-section">
     <div class="landing-section__inner f-col">
       <h2 class="landing-section__title">What's on the table</h2>
-      <lottie-player
-        src="/lottie/brain-bulb-with-gears.json"
-        class="landing__animation"
+
+      <vue3-lottie
+        animation-link="/lottie/brain-bulb-with-gears.json"
+        class="landing-section__animation"
         loop
+        width="100%"
+        height="100%"
         auto-play
       />
 
@@ -23,3 +26,17 @@
     </div>
   </section>
 </template>
+
+<script lang="ts">
+import { Vue3Lottie } from 'vue3-lottie'
+const components = { Vue3Lottie }
+</script>
+
+<style lang="scss" scoped>
+.offer-section {
+  background: linear-gradient(180deg, #6a9899 0, #fffade 100%);
+  &:deep(.landing-section__animation) {
+    width: 100%;
+  }
+}
+</style>
