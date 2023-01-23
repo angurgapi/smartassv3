@@ -9,7 +9,7 @@ pages:
   index:
     title: smartass
     greeting: Hey smartass
-    time: Time to exercise your brain
+    time: Time to exercise <br/> your brain
     comma: ''
     reason_block: 
       title: why even bother

@@ -2,7 +2,7 @@
   <section class="landing-section bg-light text-dark">
     <div class="landing-section__inner f-col">
       <h2 class="landing-section__title">Why even bother?</h2>
-      <ReasonCard
+      <IndexReasonCard
         v-for="(reason, index) in reasons"
         :key="index"
         :card="reason"
@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import ReasonCard from './ReasonCard.vue'
 // vars
 const reasons = [
   {

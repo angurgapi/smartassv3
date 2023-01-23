@@ -1,21 +1,22 @@
 <template>
   <div class="page">
-    <h1 class="page__title">Simon</h1>
-    <p class="page__description">
-      Repeat the sequence of buttons <br />
-      played by the computer
-    </p>
-    <div class="game card">
-      <SimonGame />
+    <div class="page__content">
+      <h1 class="page__title">Simon</h1>
+      <p class="page__description">
+        Repeat the sequence of buttons <br />
+        played by the computer
+      </p>
+      <GameContainer>
+        <SimonGame />
+      </GameContainer>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Game',
-  layout: 'game',
-}
+<script lang="ts" setup>
+definePageMeta({
+  layout: 'page',
+})
 </script>
 
 <style lang="scss" scoped>

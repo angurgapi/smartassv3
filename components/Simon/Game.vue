@@ -1,15 +1,17 @@
 <template>
   <div class="field f-col">
     <div class="field__game">
-      <button class="btn start-btn" @click="startGame">{{ getBtnText }}</button>
+      <button ref="startBtn" class="btn start-btn" @click="startGame">
+        {{ startBtnText }}
+      </button>
 
       <div class="field__grid">
         <SimonSoundBtn
           v-for="btn in soundBtns"
           :key="btn.value"
-          :ref="btn.value"
           :btn="btn"
-          @click="handleClick"
+          :is-lit="currentLitBtn === btn.value"
+          @click="handleUserClick"
         />
       </div>
     </div>
@@ -30,114 +32,156 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SimonGame',
-  data: () => ({
-    speedOptions: [
-      { value: 'easy', description: 'min', speed: 1500 },
-      { value: 'normal', description: 'mid', speed: 1000 },
-      { value: 'hard', description: 'max', speed: 400 },
-    ],
-    isGameOn: false,
-    isUsersTurn: false,
-    hasUserWon: false,
-    gameSpeed: 'normal',
-    level: 1,
-    generatedSequence: [],
-    sequenceInterval: null,
-    userSequence: [],
-    soundBtns: [
-      {
-        value: 1,
-        color: '#f5bd07',
-      },
-      {
-        value: 2,
-        color: '#040d3d',
-      },
-      {
-        value: 3,
-        color: '#0f421d',
-      },
-      {
-        value: 4,
-        color: '#47090b',
-      },
-    ],
-  }),
-  computed: {
-    getBtnText() {
-      return this.isGameOn ? 'Restart' : 'Start'
-    },
+<script lang="ts" setup>
+import { ref, reactive, onMounted, computed, Component } from 'vue'
+
+const soundBtns = [
+  {
+    value: 1,
+    color: '#f5bd07',
   },
-
-  methods: {
-    setSpeed(mode) {
-      this.gameSpeed = mode
-    },
-
-    // start game
-    startGame() {
-      this.isGameOn = true
-      this.hasUserWon = false
-      clearInterval(this.sequenceInterval)
-      this.generateSequence()
-    },
-
-    // get random array of btn clicks
-    generateSequence() {
-      this.generatedSequence = []
-      this.userSequence = []
-      this.isUsersTurn = false
-      for (let i = 0; i < this.level; i++) {
-        const randomNum = Math.floor(Math.random() * 4) + 1
-        this.generatedSequence.push(randomNum)
-      }
-
-      this.playSequence()
-    },
-    handleClick(btn) {
-      this.userSequence.push(btn)
-      if (this.userSequence.length === this.generatedSequence.length) {
-        if (
-          JSON.stringify(this.userSequence) ===
-          JSON.stringify(this.generatedSequence)
-        ) {
-          this.level++
-          setTimeout(() => {
-            this.startGame()
-          }, 1000)
-        } else {
-          setInterval(() => {
-            if (this.level > 1) {
-              this.level--
-            }
-          }, 200)
-          this.isGameOn = false
-        }
-      }
-    },
-
-    playSequence() {
-      let currentTile = 0
-      const chosenInterval = this.speedOptions.find(
-        (mode) => mode.value === this.gameSpeed
-      ).speed
-      this.sequenceInterval = setInterval(() => {
-        if (currentTile >= this.generatedSequence.length) {
-          clearInterval(this.sequenceInterval)
-          this.isUsersTurn = true
-        } else {
-          this.playBtn(this.generatedSequence[currentTile])
-          currentTile++
-        }
-      }, chosenInterval)
-    },
-    playBtn(idx) {
-      this.$refs[idx][0].playBtn()
-    },
+  {
+    value: 2,
+    color: '#040d3d',
   },
+  {
+    value: 3,
+    color: '#0f421d',
+  },
+  {
+    value: 4,
+    color: '#47090b',
+  },
+]
+
+const show = ref(0)
+
+const speedOptions = [
+  { value: 'easy', description: 'min', speed: 1500 },
+  { value: 'normal', description: 'mid', speed: 1000 },
+  { value: 'hard', description: 'max', speed: 400 },
+]
+
+let isGameOn = false
+let isUsersTurn = false
+let hasUserWon = false
+const gameSpeed = ref('normal')
+
+let generatedSequence: number[] = []
+let userSequence: number[] = []
+
+let sequenceInterval: NodeJS.Timeout
+let level = 1
+let startBtnText = 'start'
+
+// user events
+const setSpeed = (mode: string) => {
+  gameSpeed.value = mode
+}
+
+const clearCurrentData = () => {
+  isUsersTurn = false
+  hasUserWon = false
+  userSequence = []
+  generatedSequence = []
+  clearInterval(sequenceInterval)
+}
+
+const startGame = () => {
+  clearCurrentData()
+  level = 1
+  isGameOn = true
+  startBtnText = 'restart'
+  generateSequence()
+  animateStartBtn()
+}
+
+const generateSequence = () => {
+  for (let i = 0; i < level; i++) {
+    const randomNum = Math.floor(Math.random() * 4) + 1
+    generatedSequence.push(randomNum)
+  }
+
+  playSequence()
+}
+
+const playSequence = () => {
+  let currentTile = 0
+  const chosenInterval = speedOptions.find(
+    (mode) => mode.value === gameSpeed.value
+  )?.speed
+  sequenceInterval = setInterval(() => {
+    if (currentTile >= generatedSequence.length) {
+      clearInterval(sequenceInterval)
+      isUsersTurn = true
+    } else {
+      playBtn(generatedSequence[currentTile])
+      currentTile++
+    }
+  }, chosenInterval)
+}
+
+const playBtn = (btn: number) => {
+  const audio = new Audio(`/sounds/${btn}.mp3`)
+  audio.play()
+  litBtn(btn)
+}
+
+const currentLitBtn = ref(0)
+
+const litBtn = (btn: number) => {
+  currentLitBtn.value = btn
+  setTimeout(() => {
+    currentLitBtn.value = 0
+  }, 500)
+}
+
+const handleUserClick = (btn: number) => {
+  if (isUsersTurn) {
+    playBtn(btn)
+    userSequence.push(btn)
+    if (userSequence.length === generatedSequence.length) {
+      console.log('time to compare two sequences')
+      if (JSON.stringify(userSequence) === JSON.stringify(generatedSequence)) {
+        console.log('they match')
+        nextLevel()
+      } else {
+        console.log('user fucked up')
+        endGame()
+      }
+    }
+  }
+}
+
+const nextLevel = () => {
+  level++
+  clearCurrentData()
+  setTimeout(() => {
+    generateSequence()
+  }, 1000)
+}
+
+const endGame = () => {
+  clearCurrentData()
+  isGameOn = false
+  startBtnText = 'start'
+  setInterval(() => {
+    while (level > 1) {
+      level--
+    }
+  }, 300)
+}
+
+const startBtn = ref<HTMLElement | null>(null)
+defineExpose({
+  startBtn,
+})
+
+const animateStartBtn = () => {
+  startBtn.value.classList.add('rotated')
+  setTimeout(() => {
+    startBtn.value.classList.remove('rotated')
+  }, 1000)
 }
 </script>
 
@@ -190,6 +234,18 @@ button {
   &--active {
     transform: scale(1.2);
     opacity: 0.9;
+  }
+}
+
+.rotated {
+  animation: rotate 0.2s linear;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>

@@ -1,23 +1,20 @@
 <template>
-  <div>
-    <slot name="app-before" />
-    <div id="app-before"></div>
-    <div class="flex flex-col min-h-screen">
-      <slot name="header">
-        <NavBar />
-      </slot>
-      <div class="flex-1 w-full flex flex-col">
-        <div
-          class="relative flex-1 flex flex-col mx-auto max-w-8xl w-full h-full"
-        >
-          <slot />
-        </div>
-      </div>
-      <slot name="footer">
-        <PageFooter />
-      </slot>
+  <div class="wrapper">
+    <NavBar />
+    <div class="wrapper__content">
+      <slot />
     </div>
-    <slot name="app-after" />
-    <div id="app-after"></div>
+
+    <slot name="footer">
+      <Footer />
+    </slot>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.wrapper {
+  &:deep(.navbar) {
+    background-color: rgba(17, 24, 39, 0.9);
+  }
+}
+</style>

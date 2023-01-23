@@ -1,116 +1,50 @@
 <template>
-  <PageWrapper>
-    <PageSection class="mb-0">
-      <Alert
-        type="success"
-        title="We don't keep track of your progress"
-        text="...so far"
-        class="mb-6"
-      />
-    </PageSection>
-    <PageHeader>
-      <PageTitle :text="$t('pages.games.title')" class="capitalize" />
-    </PageHeader>
-    <PageBody>
-      <PageSection>
-        <TabGroup
-          as="div"
-          class="flex flex-col md:flex-row md:space-x-4"
-          :vertical="screen.higherThan(Size.MEDIUM)"
-        >
-          <TabList class="w-full md:w-1/6 flex md:flex-col rounded-lg mb-2">
-            <HeadlessUiTab v-slot="{ selected }" as="template">
-              <button
-                :class="[
-                  'md:w-full text-left px-3 py-1.5 rounded py-2.5 text-sm leading-5 transition-all hover:bg-gray-200 hover:text-slate-900 dark:hover:bg-white/[0.12] dark:hover:text-white',
-                  selected
-                    ? 'font-extrabold'
-                    : 'text-slate-800 dark:text-gray-400',
-                ]"
-              >
-                {{ $t('pages.games.general') }}
-              </button>
-            </HeadlessUiTab>
-            <HeadlessUiTab v-slot="{ selected }" as="template">
-              <button
-                :class="[
-                  'md:w-full text-left px-3 py-1.5 rounded py-2.5 text-sm leading-5 transition-all hover:bg-gray-200 hover:text-slate-900 dark:hover:bg-white/[0.12] dark:hover:text-white',
-                  selected
-                    ? 'font-extrabold'
-                    : 'text-slate-800 dark:text-gray-400',
-                ]"
-              >
-                {{ $t('pages.games.memory') }}
-              </button>
-            </HeadlessUiTab>
-            <HeadlessUiTab v-slot="{ selected }" as="template">
-              <button
-                :class="[
-                  'md:w-full text-left px-3 py-1.5 rounded py-2.5 text-sm leading-5 transition-all hover:bg-gray-200 hover:text-slate-900 dark:hover:bg-white/[0.12] dark:hover:text-white',
-                  selected
-                    ? 'font-extrabold'
-                    : 'text-slate-800 dark:text-gray-400',
-                ]"
-              >
-                {{ $t('pages.games.math') }}
-              </button>
-            </HeadlessUiTab>
-          </TabList>
+  <div class="page">
+    <div class="page__content">
+      <TabGroup>
+        <template #navigation>
+          <TabButton
+            :active="currentTab === 'general'"
+            :title="$t('pages.games.general')"
+            value="general"
+            @click="changeTab"
+          />
+          <TabButton
+            :active="currentTab === 'memory'"
+            :title="$t('pages.games.memory')"
+            value="memory"
+            @click="changeTab"
+          />
+          <TabButton
+            :active="currentTab === 'math'"
+            :title="$t('pages.games.math')"
+            value="math"
+            @click="changeTab"
+          />
+        </template>
 
-          <!-- tabs content -->
-          <TabPanels class="flex-1">
-            <!-- general tab -->
-            <TabPanel>
-              <Card class="mb-4">
-                <CardContent>
-                  <CardTitle :text="$t('pages.games.general')" />
-                  <GamesGrid :games-array="gamesArray" />
-                </CardContent>
-              </Card>
-            </TabPanel>
-            <!-- memory tab -->
-            <TabPanel>
-              <Card
-                :class="{
-                  'mb-4': true,
-                }"
-              >
-                <CardContent>
-                  <CardTitle
-                    class="capitalize"
-                    :text="$t('pages.games.memory')"
-                  />
-                  <GamesGrid :games-array="getMemoryArray" />
-                </CardContent>
-              </Card>
-            </TabPanel>
-            <!-- math tab -->
-            <TabPanel>
-              <Card class="mb-4">
-                <CardContent>
-                  <CardTitle
-                    class="capitalize"
-                    :text="$t('pages.games.math')"
-                  />
-                  <GamesGrid :games-array="getMathArray" />
-                </CardContent>
-              </Card>
-            </TabPanel>
-          </TabPanels>
-        </TabGroup>
-      </PageSection>
-    </PageBody>
-  </PageWrapper>
+        <template #content>
+          <TabPanel v-show="currentTab === 'general'">
+            <span>{{ $t('pages.games.general') }}</span>
+            <GameGrid :games-array="gamesArray" />
+          </TabPanel>
+
+          <TabPanel v-show="currentTab === 'memory'">
+            <span>{{ $t('pages.games.memory') }}</span>
+            <GameGrid :games-array="getMemoryArray" />
+          </TabPanel>
+
+          <TabPanel v-show="currentTab === 'math'">
+            <span>{{ $t('pages.games.math') }}</span>
+            <GameGrid :games-array="getMathArray" />
+          </TabPanel>
+        </template>
+      </TabGroup>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {
-  TabGroup,
-  TabList,
-  Tab as HeadlessUiTab,
-  TabPanels,
-  TabPanel,
-} from '@headlessui/vue'
 import { computed } from 'vue'
 import { capitalize } from '~/utils/str'
 import { Size } from '~/composables/useScreen'
@@ -118,6 +52,8 @@ import { Size } from '~/composables/useScreen'
 // composable
 const { t } = useLang()
 const screen = useScreen()
+
+const currentTab = ref('general')
 
 // compiler macro
 definePageMeta({
@@ -174,4 +110,8 @@ const getMemoryArray = computed(() =>
 const getMathArray = computed(() =>
   gamesArray.filter((game) => game.type === 'math')
 )
+
+const changeTab = (tabName: string) => {
+  currentTab.value = tabName
+}
 </script>

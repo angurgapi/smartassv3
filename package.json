@@ -66,6 +66,7 @@
     "*.(js|ts|vue)": "eslint --cache --fix"
   },
   "dependencies": {
-    "@nuxtjs/svg-sprite": "^0.5.2"
+    "@nuxtjs/svg-sprite": "^0.5.2",
+    "vue3-lottie": "^2.4.0"
   }
 }
