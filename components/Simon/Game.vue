@@ -172,15 +172,17 @@ const endGame = () => {
   }, 300)
 }
 
-const startBtn = ref<HTMLElement | null>(null)
-defineExpose({
-  startBtn,
-})
-
 const animateStartBtn = () => {
-  startBtn.value.classList.add('rotated')
+  const startBtn = ref(null)
+  if (startBtn.value) {
+    rotateBtn(startBtn.value)
+  }
+}
+
+const rotateBtn = (el: HTMLElement) => {
+  el.classList.add('rotated')
   setTimeout(() => {
-    startBtn.value.classList.remove('rotated')
+    el.classList.remove('rotated')
   }, 1000)
 }
 </script>

@@ -9,7 +9,7 @@
       <GameContainer>
         <div class="pattern-grid">
           <div
-            v-for="(tile, index) in tilesArray"
+            v-for="(tile, index) in getArray"
             :key="index"
             class="pattern-grid__tile"
             :class="{ 'pattern-grid__tile--filled': tile === 1 }"
@@ -25,13 +25,32 @@ definePageMeta({
   layout: 'page',
 })
 const tilesAmount = 36
-const tilesArray = reactive([])
 
-onBeforeMount(() => {
+const getArray = computed(() => {
+  const tilesArray: number[] = []
   for (let i = 0; i < tilesAmount; i++) {
-    tilesArray.push(Math.floor(Math.random() + 0.5))
+    // check if there's not enough filled tiles already
+    const filledTiles = tilesArray.filter((el) => el > 0)
+    const proportions = filledTiles.length / tilesAmount
+    if (proportions < 0.33) {
+      tilesArray.push(Math.floor(Math.random() + 0.5))
+    } else tilesArray.push(0)
   }
+  return tilesArray
 })
+
+// onBeforeMount(() => {
+//   for (let i = 0; i < tilesAmount; i++) {
+//     //check if there's not enough filled tiles already
+//     let filledTiles = tilesArray.filter((el) => el > 0)
+//     let proportions = filledTiles.length / tilesAmount
+//     if(proportions < 0.33) {
+//       tilesArray.push(Math.floor(Math.random() + 0.5))
+//     }
+//     else tilesArray.push(0)
+
+//   }
+// })
 </script>
 
 <style lang="scss" scoped>
