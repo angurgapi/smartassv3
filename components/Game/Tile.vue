@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="`/games/${game.url}`" class="game-card">
-    <img class="game-card__cover" :src="`/assets/games/${game.image}.png`" />
+    <img class="game-card__cover" :src="`/assets/${getImgUrl}`" />
 
     <div class="game-card__body dark:text-white">
       <p class="game-card__title">{{ game.title }}</p>
@@ -15,6 +15,10 @@ import { GameData } from '~~/types/GameData'
 const props = defineProps<{
   game: GameData
 }>()
+
+const getImgUrl = props.game.image
+  ? `games/${props.game.image}.png`
+  : 'placeholder.webp'
 </script>
 
 <style lang="scss" scoped>
@@ -26,6 +30,7 @@ const props = defineProps<{
   box-shadow: -1px 0px 8px 0px rgba(34, 60, 80, 0.17);
   transition: 0.3s all ease-in-out;
   border-radius: 8px;
+  color: rgb(17, 24, 39);
 
   &:hover {
     box-shadow: -1px 0px 10px 0px rgba(34, 60, 80, 0.27);
@@ -35,7 +40,7 @@ const props = defineProps<{
     height: 50%;
     min-height: 125px;
     background-size: cover;
-    background-size: contain;
+    // background-size: contain;
     background-position: center;
     border-radius: 8px 8px 0 0;
   }

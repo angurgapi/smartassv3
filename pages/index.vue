@@ -14,6 +14,11 @@ definePageMeta({
   layout: 'index',
 })
 
+// onBeforeMount(() => {
+//   console.log('before mount')
+//   debugger
+// })
+
 // useHead(() => ({
 //   script: [
 //     {

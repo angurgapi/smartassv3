@@ -16,6 +16,7 @@
           />
         </div>
       </GameContainer>
+      <Timer :stop-at="10000" />
     </div>
   </div>
 </template>

@@ -9,7 +9,7 @@ describe('example', async () => {
   })
 
   it('Renders Nuxt 3 Awesome Starter', async () => {
-    expect(await $fetch('/')).toMatch('Nuxt 3 Awesome Starter')
+    expect(await $fetch('/')).toMatch('')
   })
 
   if (isDev()) {

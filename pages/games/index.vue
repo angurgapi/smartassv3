@@ -102,6 +102,13 @@ const gamesArray = [
     image: 'math',
     type: 'math',
   },
+  {
+    id: 5,
+    title: 'Patterns',
+    description: 'Quickly memorize the pattern of tiles',
+    url: 'patterns',
+    type: 'memory',
+  },
 ]
 const getMemoryArray = computed(() =>
   gamesArray.filter((game) => game.type === 'memory')

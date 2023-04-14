@@ -17,6 +17,7 @@
 
 <style lang="scss" scoped>
 .wrapper__banner {
+  width: 100%;
   background-image: linear-gradient(
     to right,
     #12002e,

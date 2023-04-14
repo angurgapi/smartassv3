@@ -1,7 +1,9 @@
 <template>
   <div class="hero f-col">
     <div class="hero__content f-col">
-      <Brain />
+      <client-only>
+        <Brain />
+      </client-only>
       <div class="hero__text">
         <h1 class="hero__title">{{ $t('pages.index.greeting') }}</h1>
         <p class="hero__description" v-html="$t('pages.index.time')" />

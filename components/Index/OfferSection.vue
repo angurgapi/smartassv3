@@ -2,15 +2,16 @@
   <section class="landing-section offer-section">
     <div class="landing-section__inner f-col">
       <h2 class="landing-section__title">What's on the table</h2>
-
-      <vue3-lottie
-        animation-link="/lottie/brain-bulb-with-gears.json"
-        class="landing-section__animation"
-        loop
-        width="100%"
-        height="100%"
-        auto-play
-      />
+      <client-only>
+        <vue3-lottie
+          animation-link="/lottie/brain-bulb-with-gears.json"
+          class="landing-section__animation"
+          loop
+          width="100%"
+          height="100%"
+          auto-play
+        />
+      </client-only>
 
       <p class="landing-section__text">
         Brain fitness is just like pilates or morning jogging: you succeed after
