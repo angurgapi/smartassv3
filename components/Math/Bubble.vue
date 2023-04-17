@@ -22,5 +22,6 @@ const props = defineProps({
   border-radius: 10px;
   padding: 12px;
   background: #fff;
+  transition: 0.4s all ease-in-out;
 }
 </style>
