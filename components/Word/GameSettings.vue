@@ -8,7 +8,7 @@
       <span class="word-game-settings__label">Max word length</span>
       <FormTextInput v-model="settings.wordLength" type="number" />
     </div>
-    <button class="btn btn--primary">Start</button>
+    <button class="btn btn--primary" @click="startGame">Start</button>
   </div>
 </template>
 
@@ -25,10 +25,10 @@ const settings = ref({
   listLength: 20,
   wordLength: 8,
 })
-const emit = defineEmits(['input'])
+const emit = defineEmits(['input', 'start'])
 
-const passSelectedValue = (option: any) => {
-  emit('input', option.value)
+const startGame = () => {
+  emit('start')
 }
 </script>
 

@@ -2,7 +2,7 @@
   <div class="word-game f-col">
     <template v-if="stage === 1">
       <div class="game-preview">
-        <WordGameSettings v-model="selectedSettings" />
+        <WordGameSettings v-model="selectedSettings" @start="stage = 2" />
       </div>
     </template>
     <template v-if="stage === 2">
