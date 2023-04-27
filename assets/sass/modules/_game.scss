@@ -43,6 +43,7 @@
 
 
 .timer {
+    margin-top: 24px;
     width: 150px;
     height: 56px;
     border-radius: 20px;
@@ -59,6 +60,9 @@
     }
     span {
       margin-top: 2px;
+    }
+    &--danger {
+      border: 2px solid $danger;
     }
     @media(max-width: 350px) {
         font-size: 17px;

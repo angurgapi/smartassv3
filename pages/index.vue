@@ -1,8 +1,10 @@
 <template>
-  <div class="index-page">
-    <IndexReasonSection />
-    <IndexOfferSection />
-  </div>
+  <NuxtLayout>
+    <div class="index-page">
+      <IndexReasonSection />
+      <IndexOfferSection />
+    </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>

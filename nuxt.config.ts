@@ -16,11 +16,15 @@ export default defineNuxtConfig({
   css: [
     '~/assets/sass/vendor.scss',
     '~/assets/sass/app.scss',
-    '~/assets/sass/modules/app.scss',
+    // '~/assets/sass/modules/app.scss',
   ],
 
   // plugins
-  plugins: ['~/plugins/navbar.ts', '~/plugins/Vue3lottie.client.ts'],
+  plugins: [
+    '~/plugins/navbar.ts',
+    '~/plugins/Vue3lottie.client.ts',
+    '~/plugins/vue-click-outside.js',
+  ],
 
   // build
   build: {
@@ -56,6 +60,13 @@ export default defineNuxtConfig({
         ],
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/sass/modules/app.scss";',
+        },
+      },
+    },
   },
 
   // app config
@@ -88,6 +99,12 @@ export default defineNuxtConfig({
     },
     highlight: {
       theme: 'github-dark',
+    },
+  },
+  router: {
+    options: {
+      linkActiveClass: 'active',
+      linkExactActiveClass: 'exact-active',
     },
   },
 })

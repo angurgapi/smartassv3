@@ -1,12 +1,14 @@
 <template>
-  <div>
-    kek
-    <p>{{ testVal }}</p>
-    <span>{{ count }}</span>
-    <button @click="count++">++</button>
+  <NuxtLayout>
+    <div>
+      kek
+      <p>{{ testVal }}</p>
+      <span>{{ count }}</span>
+      <button @click="count++">++</button>
 
-    <TestList />
-  </div>
+      <TestList />
+    </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>

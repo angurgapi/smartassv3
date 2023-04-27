@@ -2,6 +2,7 @@ html, body {
   padding: 0;
   margin: 0;
   width: 100%;
+  height: 100%;
   font-family: 'Josefin';
   font-size: 22px;
   overflow-y: auto;
@@ -11,11 +12,8 @@ html, body {
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-}
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 

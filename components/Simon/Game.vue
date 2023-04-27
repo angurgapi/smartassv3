@@ -141,12 +141,12 @@ const handleUserClick = (btn: number) => {
     playBtn(btn)
     userSequence.push(btn)
     if (userSequence.length === generatedSequence.length) {
-      console.log('time to compare two sequences')
+      // console.log('time to compare two sequences')
       if (JSON.stringify(userSequence) === JSON.stringify(generatedSequence)) {
-        console.log('they match')
+        // console.log('they match')
         nextLevel()
       } else {
-        console.log('user fucked up')
+        // console.log('user fucked up')
         endGame()
       }
     }

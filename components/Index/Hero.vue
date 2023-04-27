@@ -1,9 +1,7 @@
 <template>
   <div class="hero f-col">
     <div class="hero__content f-col">
-      <client-only>
-        <Brain />
-      </client-only>
+      <Brain />
       <div class="hero__text">
         <h1 class="hero__title">{{ $t('pages.index.greeting') }}</h1>
         <p class="hero__description" v-html="$t('pages.index.time')" />
@@ -20,6 +18,7 @@
   user-select: none;
   overflow: hidden;
   padding: 40px;
+  height: 500px;
   @media (max-width: 800px) {
     font-size: 16px;
   }

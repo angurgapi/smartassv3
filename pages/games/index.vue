@@ -1,47 +1,49 @@
 <template>
-  <div class="page">
-    <div class="page__content">
-      <TabGroup>
-        <template #navigation>
-          <TabButton
-            :active="currentTab === 'general'"
-            :title="$t('pages.games.general')"
-            value="general"
-            @click="changeTab"
-          />
-          <TabButton
-            :active="currentTab === 'memory'"
-            :title="$t('pages.games.memory')"
-            value="memory"
-            @click="changeTab"
-          />
-          <TabButton
-            :active="currentTab === 'math'"
-            :title="$t('pages.games.math')"
-            value="math"
-            @click="changeTab"
-          />
-        </template>
+  <NuxtLayout>
+    <div class="page">
+      <div class="page__content">
+        <TabGroup>
+          <template #navigation>
+            <TabButton
+              :active="currentTab === 'general'"
+              :title="$t('pages.games.general')"
+              value="general"
+              @click="changeTab"
+            />
+            <TabButton
+              :active="currentTab === 'memory'"
+              :title="$t('pages.games.memory')"
+              value="memory"
+              @click="changeTab"
+            />
+            <TabButton
+              :active="currentTab === 'math'"
+              :title="$t('pages.games.math')"
+              value="math"
+              @click="changeTab"
+            />
+          </template>
 
-        <template #content>
-          <TabPanel v-show="currentTab === 'general'">
-            <span>{{ $t('pages.games.general') }}</span>
-            <GameGrid :games-array="gamesArray" />
-          </TabPanel>
+          <template #content>
+            <TabPanel v-show="currentTab === 'general'">
+              <span>{{ $t('pages.games.general') }}</span>
+              <GameGrid :games-array="gamesArray" />
+            </TabPanel>
 
-          <TabPanel v-show="currentTab === 'memory'">
-            <span>{{ $t('pages.games.memory') }}</span>
-            <GameGrid :games-array="getMemoryArray" />
-          </TabPanel>
+            <TabPanel v-show="currentTab === 'memory'">
+              <span>{{ $t('pages.games.memory') }}</span>
+              <GameGrid :games-array="getMemoryArray" />
+            </TabPanel>
 
-          <TabPanel v-show="currentTab === 'math'">
-            <span>{{ $t('pages.games.math') }}</span>
-            <GameGrid :games-array="getMathArray" />
-          </TabPanel>
-        </template>
-      </TabGroup>
+            <TabPanel v-show="currentTab === 'math'">
+              <span>{{ $t('pages.games.math') }}</span>
+              <GameGrid :games-array="getMathArray" />
+            </TabPanel>
+          </template>
+        </TabGroup>
+      </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
@@ -90,7 +92,7 @@ const gamesArray = [
     id: 3,
     title: 'Word list',
     description: 'Reproduce as many words from the list as you remember',
-    url: 'wordlist',
+    url: 'words',
     image: 'wordlist',
     type: 'memory',
   },

@@ -1,16 +1,18 @@
 <template>
-  <div class="page">
-    <div class="page__content">
-      <h1 class="page__title">Simon</h1>
-      <p class="page__description">
-        Repeat the sequence of buttons <br />
-        played by the computer
-      </p>
-      <GameContainer>
-        <SimonGame />
-      </GameContainer>
+  <NuxtLayout>
+    <div class="page">
+      <div class="page__content">
+        <h1 class="page__title">Simon</h1>
+        <p class="page__description">
+          Repeat the sequence of buttons <br />
+          played by the computer
+        </p>
+        <GameContainer>
+          <SimonGame />
+        </GameContainer>
+      </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>

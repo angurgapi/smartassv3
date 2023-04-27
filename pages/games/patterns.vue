@@ -1,24 +1,26 @@
 <template>
-  <div class="page">
-    <div class="page__content">
-      <h1 class="page__title">Patterns</h1>
-      <p class="page__description">
-        Repeat the pattern of tiles <br />
-        after it disappears
-      </p>
-      <GameContainer>
-        <div class="pattern-grid">
-          <div
-            v-for="(tile, index) in getArray"
-            :key="index"
-            class="pattern-grid__tile"
-            :class="{ 'pattern-grid__tile--filled': tile === 1 }"
-          />
-        </div>
-      </GameContainer>
-      <Timer :stop-at="10000" />
+  <NuxtLayout>
+    <div class="page">
+      <div class="page__content">
+        <h1 class="page__title">Patterns</h1>
+        <p class="page__description">
+          Repeat the pattern of tiles <br />
+          after it disappears
+        </p>
+        <GameContainer>
+          <div class="pattern-grid">
+            <div
+              v-for="(tile, index) in getArray"
+              :key="index"
+              class="pattern-grid__tile"
+              :class="{ 'pattern-grid__tile--filled': tile === 1 }"
+            />
+          </div>
+        </GameContainer>
+        <Timer :stop-at="10000" />
+      </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>

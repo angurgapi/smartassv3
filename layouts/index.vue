@@ -5,10 +5,6 @@
       <IndexHero />
     </div>
     <slot />
-
-    <!-- <div class="wrapper__content">
-  
-      </div> -->
     <slot name="footer">
       <Footer />
     </slot>

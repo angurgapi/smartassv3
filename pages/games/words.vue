@@ -2,12 +2,11 @@
   <NuxtLayout>
     <div class="page">
       <div class="page__content">
-        <h1 class="page__title">Math bubbles</h1>
+        <h1 class="page__title">Word list</h1>
         <p class="page__description">
-          Solve as many math equasions <br />
-          as you can before the time's out
+          Memorize as many words from the list as possible
         </p>
-        <MathGame />
+        <WordGame />
       </div>
     </div>
   </NuxtLayout>

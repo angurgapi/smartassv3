@@ -1515,6 +1515,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.brain {
+  max-width: 800px;
+}
 #canvas {
   display: block;
   // display: inline-block;
