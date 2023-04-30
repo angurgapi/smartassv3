@@ -28,5 +28,6 @@ const getYear = computed(() => new Date().getFullYear())
   width: 100%;
   background: rgb(17, 24, 39);
   color: #fffade;
+  padding: 20px;
 }
 </style>

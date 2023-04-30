@@ -1,6 +1,6 @@
 <template>
   <div class="timer f-row" :class="{ 'timer--danger': isEnding }">
-    <svg-icon name="clock" />
+    <SvgIcon name="clock" />
     <span>{{ currentSecond }}s</span>
   </div>
 </template>
@@ -48,7 +48,9 @@ const checkRemainingTime = (currentSecond: number) => {
 watch(
   () => props.on,
   (newValue) => {
-    startTimer()
+    if (newValue) {
+      startTimer()
+    }
   }
 )
 watch(currentSecond, (newVal) => {

@@ -7,7 +7,7 @@
     <input
       v-model="modelValue"
       class="text-input-container__input"
-      :type="type"
+      type="text"
       :placeholder="placeholder"
       @input="onInput"
     />
@@ -55,7 +55,7 @@ watch(
 function onInput(event: Event) {
   let sanitizedValue: string | number = (event.target as HTMLInputElement).value
   if (props.type === 'number') {
-    sanitizedValue = parseInt(sanitizedValue.replace(/\D/g, ''))
+    sanitizedValue = parseInt(sanitizedValue.replace(/\D/g, '')) || 0
   }
   modelValue.value = sanitizedValue
 }
@@ -64,13 +64,26 @@ function onInput(event: Event) {
 <style lang="scss" scoped>
 .text-input-container {
   position: relative;
+  border-radius: 5px;
+  background: $white;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+
   &__preffix,
   &__suffix {
     position: absolute;
   }
   &__input {
-    height: 36px;
+    // height: 36px;
     padding: 5px;
+    border: none;
+    background: none;
+    &:hover,
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>

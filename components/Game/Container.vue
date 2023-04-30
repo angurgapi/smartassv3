@@ -6,7 +6,12 @@
 
 <style lang="scss" scoped>
 .game-container {
-  @media (min-width: 900px) {
+  background: $yellow-bg;
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  border-radius: 8px;
+  @media (min-width: 1200px) {
     max-height: 80vh;
   }
   @media (min-width: 600px) {

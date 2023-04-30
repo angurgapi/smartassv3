@@ -44,7 +44,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['input', 'update:modelValue'])
 
 const isOpen = ref(false)
 const selectedOption = ref(props.options[0])
@@ -58,7 +58,7 @@ const label = computed(() => {
 
 const selectOption = (option: any) => {
   selectedOption.value = option
-  emit('input', selectedOption.value)
+  emit('update:modelValue', selectedOption.value.value)
   isOpen.value = false
 }
 </script>
@@ -70,24 +70,23 @@ const selectOption = (option: any) => {
   display: flex;
   align-items: center;
   width: fit-content;
-  background: #fff;
 
   &__button,
   &__content {
+    font-size: 0.8em;
     background: #fff;
-    border-radius: 5px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   &__button {
-    height: 48px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    padding: 6px 21px 6px 12px;
+    padding: 6px 12px 6px 12px;
     border: none;
+    border-radius: 5px;
     outline: none;
   }
 
@@ -102,7 +101,7 @@ const selectOption = (option: any) => {
   }
 
   &__label {
-    margin: 0 8px;
+    margin-right: 8px;
     white-space: nowrap;
     overflow: hidden;
   }
@@ -115,15 +114,16 @@ const selectOption = (option: any) => {
     top: 50px;
     padding: 0;
     width: 100%;
+    border-radius: 5px;
   }
 
   &__list {
     width: 100%;
+    margin: 0;
     padding: 0;
   }
   &__option {
     cursor: pointer;
-    height: 30px;
     width: 100%;
     opacity: 0.8;
     padding: 6px;

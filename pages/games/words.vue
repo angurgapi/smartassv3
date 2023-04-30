@@ -6,7 +6,9 @@
         <p class="page__description">
           Memorize as many words from the list as possible
         </p>
-        <WordGame />
+        <GameContainer>
+          <WordGame />
+        </GameContainer>
       </div>
     </div>
   </NuxtLayout>
