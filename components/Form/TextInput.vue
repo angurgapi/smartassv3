@@ -66,9 +66,10 @@ function onInput(event: Event) {
   position: relative;
   border-radius: 5px;
   background: $white;
+  border: 1px solid $gray;
   &:hover,
   &:focus {
-    outline: none;
+    border: 1px solid $primary-dark;
   }
 
   &__preffix,

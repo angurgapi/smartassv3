@@ -42,6 +42,8 @@ const startGame = () => {
 <style lang="scss" scoped>
 .word-game-settings {
   width: 100%;
+  max-width: 400px;
+  margin: auto;
   padding: 20px;
   &__row {
     width: 100%;

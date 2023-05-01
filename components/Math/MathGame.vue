@@ -110,6 +110,7 @@ const populateExpressions = () => {
 const endGame = () => {
   isGameOn.value = false
   isGameOver.value = true
+  solvedExpressions.value = 0
 }
 
 onMounted(() => {
@@ -151,7 +152,9 @@ onMounted(() => {
   &__result {
     margin-bottom: 16px;
   }
-
+  &::v-deep .timer {
+    margin-top: 20px;
+  }
   &::v-deep .btn--primary {
     span {
       margin-left: 12px;

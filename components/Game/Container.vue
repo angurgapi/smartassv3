@@ -10,6 +10,7 @@
   width: 100%;
   max-width: 900px;
   height: 100%;
+  border: 2px solid $primary-dark;
   border-radius: 8px;
   @media (min-width: 1200px) {
     max-height: 80vh;
