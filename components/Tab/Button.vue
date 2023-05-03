@@ -32,6 +32,7 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 .tab-btn {
   letter-spacing: 1px;
+  font-size: 0.8em;
   cursor: pointer;
   color: #000;
   height: 25px;

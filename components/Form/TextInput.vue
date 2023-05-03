@@ -67,6 +67,7 @@ function onInput(event: Event) {
   border-radius: 5px;
   background: $white;
   border: 1px solid $gray;
+  height: 42px;
   &:hover,
   &:focus {
     border: 1px solid $primary-dark;

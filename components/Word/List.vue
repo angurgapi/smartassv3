@@ -27,7 +27,7 @@ const props = defineProps({
   max-height: 70vh;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 150px);
-  grid-gap: 16px;
+  grid-gap: 10px;
   @media (max-width: 800px) {
     // grid-template-columns: repeat(auto-fill, 110px);
     grid-template-columns: repeat(auto-fill, minmax(60px, 100px));

@@ -2,7 +2,7 @@
   <div class="word-game-settings f-col">
     <div class="word-game-settings__row">
       <span class="word-game-settings__label">How many words?</span>
-      <DropDown v-model="settings.listLength" :options="options" />
+      <SelectList v-model="settings.listLength" :options="options" />
     </div>
     <div class="word-game-settings__row">
       <span class="word-game-settings__label">Max word length</span>

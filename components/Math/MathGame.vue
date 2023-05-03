@@ -15,11 +15,14 @@
       class="math-game__input"
       type="text"
     /> -->
-    <FormTextInput
-      v-if="state.equations.length"
-      v-model="currentResult"
-      type="number"
-    />
+    <div class="game-input">
+      <FormTextInput
+        v-if="state.equations.length"
+        v-model="currentResult"
+        type="number"
+      />
+      <span class="game-input__hint"> Enter any expression's result here </span>
+    </div>
     <span v-if="solvedExpressions"
       >solved {{ solvedExpressions }} {{ pluralizedCount }}</span
     >
@@ -28,7 +31,7 @@
       <span v-if="isGameOver && solvedExpressions" class="math-game__result"
         >You've nailed {{ solvedExpressions }} {{ pluralizedCount }}
       </span>
-      <button class="btn btn--primary" @click="isGameOn = true">
+      <button class="btn btn--restart" @click="isGameOn = true">
         play <span v-if="isGameOver">again</span>
       </button>
     </div>
@@ -155,7 +158,7 @@ onMounted(() => {
   &::v-deep .timer {
     margin-top: 20px;
   }
-  &::v-deep .btn--primary {
+  &::v-deep .btn--restart {
     span {
       margin-left: 12px;
     }

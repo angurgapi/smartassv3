@@ -9,21 +9,26 @@
       <WordList :words="wordList" />
       <div class="word-game__controls f-row">
         <GameTimer :on="isGameOn" :stop-at="6" @timeout="hideList" />
-        <button class="btn btn--primary" @click="stage = 1">restart</button>
+        <button class="btn btn--restart" @click="restartGame">restart</button>
       </div>
     </template>
     <template v-if="stage === 3">
       <div class="word-game__check f-col">
-        <div class="word-game__row">do you remember the words?</div>
+        <div class="word-game__row">Do you remember the words?</div>
         <div class="word-game__row">
-          <FormTextInput v-model="currentGuess" />
-          <button class="btn" @click="checkGuess">check</button>
+          <FormTextInput v-model="currentGuess" @keyup.enter="checkGuess" />
+          <button class="btn word-game__submit" @click="checkGuess">
+            <SvgIcon name="check" class="word-game__icon" />
+          </button>
         </div>
-        <div class="word-game__row">
-          <span v-if="rememberedWords > 0"
+        <div v-if="rememberedWords > 0" class="word-game__row">
+          <span
             >Correct: {{ rememberedWords }} out of
             {{ selectedSettings.listLength }}</span
           >
+        </div>
+        <div class="word-game__row">
+          <button class="btn btn--restart" @click="restartGame">restart</button>
         </div>
       </div>
     </template>
@@ -70,6 +75,11 @@ const checkGuess = () => {
     currentGuess.value = ''
   }
 }
+
+const restartGame = () => {
+  isGameOn.value = false
+  stage.value = 1
+}
 </script>
 
 <style lang="scss" scoped>
@@ -78,17 +88,44 @@ const checkGuess = () => {
   height: 100%;
   align-items: center;
   overflow: hidden;
+
+  &__check {
+    padding: 24px;
+  }
   &__controls {
+    width: 100%;
+    background: $primary-dark;
+    padding: 20px;
     align-items: center;
+    &::v-deep .btn--restart {
+      margin-left: 20px;
+    }
   }
 
   &__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 30px;
     &:not(:first-child) {
       margin-top: 16px;
+    }
+  }
+
+  &__submit {
+    margin-left: 20px;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary-dark;
+  }
+
+  &__icon {
+    fill: $white;
+    height: 30px;
+    width: 30px;
+    &:hover {
+      fill: $bg-secondary;
     }
   }
 }

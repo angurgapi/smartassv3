@@ -4,11 +4,4 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-// onMounted(() => {
-//   debugger
-
-//     console.log('log from card')
-
-// })
-</script>
+<script lang="ts" setup></script>
