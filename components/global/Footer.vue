@@ -26,8 +26,9 @@ const getYear = computed(() => new Date().getFullYear())
 .footer {
   height: 80px;
   width: 100%;
-  background: rgb(17, 24, 39);
-  color: #fffade;
+  background: $gradient-blue;
+  color: $primary-dark;
   padding: 20px;
+  font-size: 1em;
 }
 </style>

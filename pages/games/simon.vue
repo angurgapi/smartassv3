@@ -15,12 +15,6 @@
   </NuxtLayout>
 </template>
 
-<script lang="ts" setup>
-definePageMeta({
-  layout: 'page',
-})
-</script>
-
 <style lang="scss" scoped>
 .game {
   padding: 24px;

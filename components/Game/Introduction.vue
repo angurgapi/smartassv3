@@ -32,7 +32,6 @@ const props = defineProps({
     width: 100%;
     height: 100%;
     position: absolute;
-    border-radius: 8px;
     top: 0;
     left: 0;
     background: rgba(33, 54, 95, 55%);

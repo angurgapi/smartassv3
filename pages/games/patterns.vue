@@ -8,3 +8,7 @@
     </div>
   </NuxtLayout>
 </template>
+
+<!-- <script lang="ts" set>
+
+</script> -->

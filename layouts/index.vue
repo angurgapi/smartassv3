@@ -29,5 +29,8 @@
     #634a9f,
     #785cb9
   );
+  &::v-deep .navbar__link {
+    color: $white;
+  }
 }
 </style>

@@ -57,10 +57,6 @@ const screen = useScreen()
 
 const currentTab = ref('general')
 
-// compiler macro
-definePageMeta({
-  layout: 'page',
-})
 useHead(() => ({
   title: capitalize(t('pages.games.title')),
   meta: [

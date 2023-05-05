@@ -15,20 +15,6 @@
 definePageMeta({
   layout: 'index',
 })
-
-// onBeforeMount(() => {
-//   console.log('before mount')
-//   debugger
-// })
-
-// useHead(() => ({
-//   script: [
-//     {
-//       src: 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js',
-//       rel: 'preload',
-//     },
-//   ],
-// }))
 </script>
 
 <style lang="scss">

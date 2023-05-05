@@ -3,7 +3,7 @@
     <div class="navbar__inner">
       <div class="navbar__left">
         <nuxt-link class="navbar__link f-row" to="/">
-          <SvgIcon class="navbar__icon dark:navbar__icon--white" name="brain" />
+          <img class="navbar__icon" src="/assets/brain.png" />
           smartass</nuxt-link
         >
       </div>
@@ -60,16 +60,13 @@ onMounted(() => {
 
   &__icon {
     margin-right: 10px;
-    svg {
-      fill: #fff;
-      height: 22px;
-      width: 22px;
-    }
+    height: 32px;
+    width: 32px;
   }
 
   &__link {
     font-size: 22px;
-    color: #fff;
+    color: $primary-dark;
     letter-spacing: 0.6px;
     position: relative;
     &::after {

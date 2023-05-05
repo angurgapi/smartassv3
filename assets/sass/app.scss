@@ -6,6 +6,9 @@ html, body {
   font-family: 'Josefin';
   font-size: 22px;
   overflow-y: auto;
+  @media(max-width: 800px){
+    font-size: 18px;
+  }
 }
 
 * {

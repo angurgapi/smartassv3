@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
-
   // css
   css: [
     '~/assets/sass/vendor.scss',
