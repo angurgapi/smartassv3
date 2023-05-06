@@ -8,7 +8,6 @@
       <span class="word-game-settings__label">Max word length</span>
       <FormTextInput v-model="settings.wordLength" type="number" />
     </div>
-    <button class="btn btn--primary" @click="startGame">Start</button>
   </div>
 </template>
 
@@ -29,14 +28,19 @@ const settings = reactive({
   listLength: 10,
   wordLength: 8,
 })
-const emit = defineEmits(['input', 'start'])
+const emit = defineEmits(['input'])
 
-const startGame = () => {
-  if (settings.listLength < 4) {
-    settings.listLength = 4
-  }
-  emit('start', settings)
-}
+// const startGame = () => {
+//   if (settings.listLength < 4) {
+//     settings.listLength = 4
+//   }
+//   emit('start', settings)
+// }
+
+watch(settings, (newValue) => {
+  console.log(newValue)
+  emit('input', newValue)
+})
 </script>
 
 <style lang="scss" scoped>

@@ -38,8 +38,11 @@ const props = defineProps({
     backdrop-filter: blur(8px);
   }
   &__rules {
+    width: 600px;
+    margin-top: 16px;
+    max-width: 100%;
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-align: center;
   }
   &__settings {

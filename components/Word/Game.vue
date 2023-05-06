@@ -1,38 +1,47 @@
 <template>
-  <div class="word-game f-col">
-    <template v-if="stage === 1">
-      <div class="game-preview">
-        <WordGameSettings @start="startGame" />
-      </div>
-    </template>
-    <template v-if="stage === 2">
-      <WordList :words="wordList" />
-      <div class="word-game__controls f-row">
-        <GameTimer :on="isGameOn" :stop-at="6" @timeout="hideList" />
-        <button class="btn btn--restart" @click="restartGame">restart</button>
-      </div>
-    </template>
-    <template v-if="stage === 3">
-      <div class="word-game__check f-col">
-        <div class="word-game__row">Do you remember the words?</div>
-        <div class="word-game__row">
-          <FormTextInput v-model="currentGuess" @keyup.enter="checkGuess" />
-          <button class="btn word-game__submit" @click="checkGuess">
-            <SvgIcon name="check" class="word-game__icon" />
-          </button>
-        </div>
-        <div v-if="rememberedWords > 0" class="word-game__row">
-          <span
+  <GameContainer>
+    <GameIntroduction v-if="stage === 1" @start="startGame">
+      <template #rules>
+        Memorize as many words as possible and write them down when the time's
+        out
+      </template>
+      <template #settings>
+        <WordGameSettings @input="changeSettings" />
+      </template>
+    </GameIntroduction>
+    <div v-else class="game__action f-col">
+      <template v-if="stage === 2">
+        <WordList :words="wordList" />
+      </template>
+      <template v-if="stage === 3">
+        <div class="word-game__check f-col">
+          <div class="word-game__row">Do you remember the words?</div>
+          <div class="word-game__row">
+            <FormTextInput v-model="currentGuess" @keyup.enter="checkGuess" />
+            <button class="btn word-game__submit" @click="checkGuess">
+              <SvgIcon name="check" class="word-game__icon" />
+            </button>
+          </div>
+
+          <span v-if="rememberedWords > 0" class="game__result"
             >Correct: {{ rememberedWords }} out of
             {{ selectedSettings.listLength }}</span
           >
+          <span
+            v-if="rememberedWords === selectedSettings.listLength"
+            class="game__result"
+            >Congratulations!
+          </span>
         </div>
-        <div class="word-game__row">
-          <button class="btn btn--restart" @click="restartGame">restart</button>
-        </div>
-      </div>
+      </template>
+    </div>
+    <template #footer>
+      <template v-if="stage > 1">
+        <GameTimer :on="isGameOn" :stop-at="60" @timeout="hideList" />
+        <button class="btn btn--restart" @click="restartGame">restart</button>
+      </template>
     </template>
-  </div>
+  </GameContainer>
 </template>
 
 <script lang="ts" setup>
@@ -46,9 +55,12 @@ const wordList = ref<string[]>([])
 const currentGuess = ref('')
 const rememberedWords = ref(0)
 
-const startGame = (settings: any) => {
+const changeSettings = (settings: any) => {
   selectedSettings.listLength = settings.listLength
   selectedSettings.wordLength = settings.wordLength
+}
+
+const startGame = () => {
   generateList()
   stage.value = 2
   setTimeout(() => {
@@ -69,9 +81,12 @@ const hideList = () => {
 }
 
 const checkGuess = () => {
-  console.log(currentGuess.value)
   if (wordList.value.includes(currentGuess.value.toLowerCase())) {
     rememberedWords.value++
+    wordList.value.splice(
+      wordList.value.indexOf(currentGuess.value.toLowerCase()),
+      1
+    )
     currentGuess.value = ''
   }
 }
@@ -89,9 +104,6 @@ const restartGame = () => {
   align-items: center;
   overflow: hidden;
 
-  &__check {
-    padding: 24px;
-  }
   &__controls {
     width: 100%;
     background: $primary-dark;
@@ -99,6 +111,12 @@ const restartGame = () => {
     align-items: center;
     &::v-deep .btn--restart {
       margin-left: 20px;
+    }
+  }
+
+  &__check {
+    .game__result {
+      margin-top: 15px;
     }
   }
 
@@ -128,10 +146,5 @@ const restartGame = () => {
       fill: $bg-secondary;
     }
   }
-}
-
-.game-preview {
-  width: 100%;
-  height: 100%;
 }
 </style>
