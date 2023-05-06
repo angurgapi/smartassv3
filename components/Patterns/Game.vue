@@ -15,25 +15,31 @@
     <div v-else class="game__action f-col">
       <template v-if="stage === 2">
         <div class="pattern-grid" :class="getGridClass">
-          <div
+          <PatternsTile
             v-for="(tile, index) in computerArray"
             :key="index"
-            class="pattern-grid__tile"
-            :class="{ 'pattern-grid__tile--filled': tile === 1 }"
+            :is-filled="tile === 1"
+            :size="availableTileSize"
           />
         </div>
-        <button class="btn btn--secondary" @click="shuffleArray">
-          <SvgIcon name="shuffle" />
-          shuffle
-        </button>
+        <div class="game__row">
+          <button class="btn btn--secondary btn--block" @click="shuffleArray">
+            <SvgIcon class="btn-icon" name="shuffle" />
+            shuffle
+          </button>
+          <button class="btn btn--secondary btn--block" @click="startCheck">
+            <SvgIcon class="btn-icon" name="forward" />
+            skip
+          </button>
+        </div>
       </template>
       <template v-if="stage === 3">
         <div class="pattern-grid" :class="getGridClass">
-          <div
+          <PatternsTile
             v-for="(tile, index) of tilesAmount"
             :key="`users-${index}`"
-            class="pattern-grid__tile"
-            :class="{ 'pattern-grid__tile--filled': userArray[index] === 1 }"
+            :size="availableTileSize"
+            :is-filled="userArray[index] === 1"
             @click="checkTile(index)"
           />
         </div>
@@ -48,32 +54,30 @@
         <div class="game__row">
           <div class="f-col">
             <div class="pattern-grid" :class="getGridClass">
-              <div
+              <PatternsTile
                 v-for="(tile, index) of tilesAmount"
                 :key="index"
-                class="pattern-grid__tile"
-                :class="{
-                  'pattern-grid__tile--filled': computerArray[index] === 1,
-                }"
+                :size="availableTileSize / 2"
+                :is-filled="computerArray[index] === 1"
               />
             </div>
-            <span>Original pattern</span>
+            <span class="game__hint">Original pattern</span>
           </div>
           <div class="f-col">
             <div class="pattern-grid pattern-grid--copy" :class="getGridClass">
-              <div
+              <PatternsTile
                 v-for="(tile, index) of tilesAmount"
                 :key="index"
-                class="pattern-grid__tile"
-                :class="{
-                  'pattern-grid__tile--filled': userArray[index] === 1,
-                }"
+                :size="availableTileSize / 4"
+                :is-filled="userArray[index] === 1"
               />
             </div>
-            <span>Your pattern</span>
+            <span class="game__hint">Your pattern</span>
           </div>
         </div>
-        <span v-if="matchPercentage">{{ matchPercentage }}% match</span>
+        <span v-if="matchPercentage" class="game__result"
+          >{{ matchPercentage }}% match</span
+        >
       </template>
     </div>
     <!-- end of body -->
@@ -87,10 +91,6 @@
 </template>
 
 <script lang="ts" setup>
-// definePageMeta({
-//   layout: 'page',
-// })
-// const tilesAmount = 36
 const tilesAmount = ref(16)
 
 const stage = ref(1)
@@ -100,8 +100,11 @@ const userArray: number[] = reactive([])
 
 const matchPercentage = ref(0)
 
+const availableTileSize = ref(0)
+
 const startGame = () => {
   stage.value = 2
+  calcTileSize()
   populateArray()
 }
 const options = [
@@ -159,8 +162,6 @@ const checkTile = (tileIdx: number) => {
   userArray[tileIdx] = userArray[tileIdx] === 1 ? 0 : 1
 }
 const comparePatterns = () => {
-  // console.log(computerArray)
-  // console.log(userArray)
   stage.value = 4
   let matches = 0
   for (let i = 0; i < tilesAmount.value; i++) {
@@ -172,7 +173,18 @@ const comparePatterns = () => {
 }
 
 const restartGame = () => {
+  tilesAmount.value = 16
   stage.value = 1
+}
+
+const calcTileSize = () => {
+  const smallerSide =
+    window.innerHeight >= window.innerWidth
+      ? window.innerWidth
+      : window.innerHeight * 0.5
+
+  const availableGridSize = smallerSide - 100
+  availableTileSize.value = ~~(availableGridSize / Math.sqrt(tilesAmount.value))
 }
 </script>
 
@@ -191,23 +203,12 @@ const restartGame = () => {
   &--36 {
     grid-template-columns: repeat(6, 1fr);
   }
-  &__tile {
-    width: 40px;
-    border: 1px solid #000;
-    height: 40px;
-    background: $bg-light;
 
-    &--filled {
-      background: $yellow-bg;
-    }
-  }
   &__compare {
     margin-top: 20px;
   }
-  &--copy {
-    @media (min-width: 800px) {
-      margin-left: 20px;
-    }
-  }
+}
+.btn--secondary {
+  margin-top: 20px;
 }
 </style>

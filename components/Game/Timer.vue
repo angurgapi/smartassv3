@@ -50,6 +50,8 @@ watch(
   (newValue) => {
     if (newValue) {
       startTimer()
+    } else {
+      stopTimer()
     }
   }
 )

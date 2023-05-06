@@ -94,6 +94,17 @@
         }
       }
 
+      &--secondary {
+        height: 42px;
+        font-size: 1em;
+        background: $bg-light;
+        box-shadow: $box-shadow--default;
+        color: $primary-dark;
+        &:hover {
+          box-shadow: $box-shadow--hard;
+        }
+      }
+
       &--restart {
         height: 56px;
         border: 1px solid $primary-dark;
@@ -105,6 +116,10 @@
         &:hover {
           background-color: $bg-secondary;
         }
+      }
+
+      &--block {
+        width: 100%;
       }
  }
 
@@ -176,4 +191,11 @@
 
 .modal-content {
   padding: 35px 20px;
+}
+
+.btn-icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 16px;
+  fill: currentColor;
 }

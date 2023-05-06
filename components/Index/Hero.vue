@@ -42,6 +42,7 @@
   &__title {
     margin: 0;
     font-size: 3.4em;
+    font-family: 'Lucky';
   }
 
   &__description {

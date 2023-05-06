@@ -8,10 +8,10 @@ components:
 pages:
   index:
     title: smartass
-    greeting: Hey smartass
+    greeting: Hey stranger
     time: Time to exercise <br/> your brain
     comma: ''
-    reason_block: 
+    reason_block:
       title: why even bother
   404:
     title: page not found
@@ -38,7 +38,7 @@ pages:
     nav: getting started
     title: getting started
     description: this is a getting started page
-  games: 
+  games:
     title: games
     nav: games
     description: Brain training games

@@ -27,7 +27,7 @@ const getImgUrl = props.game.image
   display: flex;
   flex-direction: column;
   min-height: 250px;
-  box-shadow: -1px 0px 8px 0px rgba(34, 60, 80, 0.17);
+  box-shadow: $box-shadow--default;
   transition: 0.3s all ease-in-out;
   border-radius: 8px;
   color: rgb(17, 24, 39);

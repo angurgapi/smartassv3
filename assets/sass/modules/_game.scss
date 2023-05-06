@@ -45,11 +45,28 @@
     }
 
     &__row {
-      display: flex;
+      width: 100%;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
       align-items: center;
       @media(max-width: 800px) {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+
       }
+    }
+
+    &__hint {
+      font-size: .7em;
+      opacity: .7;
+      margin-top: 10px;
+    }
+
+    &__result {
+      font-size: 1em;
+      color: $primary-dark;
+      font-family: 'Rubik';
+      margin-top: 20px;
     }
 }
 
