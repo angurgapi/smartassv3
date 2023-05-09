@@ -1,7 +1,6 @@
 <template>
   <nuxt-link :to="`/games/${game.url}`" class="game-card">
     <img class="game-card__cover" :src="`/assets/${getImgUrl}`" />
-
     <div class="game-card__body dark:text-white">
       <p class="game-card__title">{{ game.title }}</p>
       <span class="game-card__description">{{ game.description }}</span>

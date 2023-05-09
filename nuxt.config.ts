@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/content',
     '@vueuse/nuxt',
+    '@nuxtjs/svg-sprite',
   ],
 
   // experimental features

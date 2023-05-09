@@ -33,11 +33,16 @@
   &__footer {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
     padding: 16px;
     background: $primary-dark;
     &::v-deep .btn {
       margin-left: 20px;
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: column;
     }
   }
 }

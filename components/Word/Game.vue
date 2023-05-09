@@ -15,7 +15,7 @@
       </template>
       <template v-if="stage === 3">
         <div class="word-game__check f-col">
-          <div class="word-game__row">Do you remember the words?</div>
+          <div class="game__description">Do you remember the words?</div>
           <div class="word-game__row">
             <FormTextInput v-model="currentGuess" @keyup.enter="checkGuess" />
             <button class="btn word-game__submit" @click="checkGuess">
@@ -23,15 +23,25 @@
             </button>
           </div>
 
-          <span v-if="rememberedWords > 0" class="game__result"
-            >Correct: {{ rememberedWords }} out of
-            {{ selectedSettings.listLength }}</span
-          >
-          <span
-            v-if="rememberedWords === selectedSettings.listLength"
-            class="game__result"
-            >Congratulations!
-          </span>
+          <div v-if="rememberedWords > 0" class="word-game__progress f-col">
+            <span class="game__description"
+              >Correct: {{ rememberedWords }} out of
+              {{ selectedSettings.listLength }}</span
+            >
+            <span
+              v-if="rememberedWords === selectedSettings.listLength"
+              class="game__description"
+              >Congratulations!
+            </span>
+            <div class="word-game__cache">
+              <span
+                v-for="(word, index) in rememberedWordsList"
+                :key="index"
+                class="word-game__cached"
+                >{{ word }}</span
+              >
+            </div>
+          </div>
         </div>
       </template>
     </div>
@@ -49,11 +59,12 @@ import randomWords from 'random-words'
 
 const stage = ref(1)
 const isGameOn = ref(false)
-const selectedSettings = reactive({ listLength: 20, wordLength: 8 })
+const selectedSettings = reactive({ listLength: 10, wordLength: 8 })
 const wordList = ref<string[]>([])
 
 const currentGuess = ref('')
 const rememberedWords = ref(0)
+const rememberedWordsList = ref<string[]>([])
 
 const changeSettings = (settings: any) => {
   selectedSettings.listLength = settings.listLength
@@ -81,12 +92,11 @@ const hideList = () => {
 }
 
 const checkGuess = () => {
-  if (wordList.value.includes(currentGuess.value.toLowerCase())) {
+  const guessCurated = currentGuess.value.toLowerCase()
+  if (wordList.value.includes(guessCurated)) {
     rememberedWords.value++
-    wordList.value.splice(
-      wordList.value.indexOf(currentGuess.value.toLowerCase()),
-      1
-    )
+    rememberedWordsList.value.push(guessCurated)
+    wordList.value.splice(wordList.value.indexOf(guessCurated), 1)
     currentGuess.value = ''
   }
 }
@@ -115,7 +125,7 @@ const restartGame = () => {
   }
 
   &__check {
-    .game__result {
+    .game__description {
       margin-top: 15px;
     }
   }
@@ -144,6 +154,15 @@ const restartGame = () => {
     width: 30px;
     &:hover {
       fill: $bg-secondary;
+    }
+  }
+  &__cache {
+    margin-top: 16px;
+  }
+  &__cached {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 16px;
     }
   }
 }

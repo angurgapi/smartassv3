@@ -1,6 +1,7 @@
 <template>
   <div class="timer f-row" :class="{ 'timer--danger': isEnding }">
-    <SvgIcon name="clock" />
+    <!-- <SvgIcon name="clock" /> -->
+    <svg-icon name="clock" />
     <span>{{ currentSecond }}s</span>
   </div>
 </template>
@@ -33,14 +34,20 @@ const startTimer = () => {
 }
 
 const stopTimer = () => {
-  clearInterval(timerInterval)
-  isEnding.value = false
-  emit('timeout')
+  if (timerInterval) {
+    clearInterval(timerInterval)
+    timerInterval = null
+    currentSecond.value = 0
+
+    if (props.on) {
+      emit('timeout')
+    }
+  }
 }
 
 const checkRemainingTime = (currentSecond: number) => {
   const remainder: number = +props.stopAt - currentSecond
-  if (remainder <= 5) {
+  if (props.stopAt && remainder <= 5) {
     isEnding.value = true
   }
 }
@@ -57,7 +64,7 @@ watch(
 )
 watch(currentSecond, (newVal) => {
   checkRemainingTime(newVal)
-  if (+newVal === +props.stopAt) {
+  if (props.stopAt && +newVal === +props.stopAt) {
     stopTimer()
   }
 })
@@ -68,3 +75,35 @@ onMounted(() => {
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.timer {
+  height: 42px;
+  width: 130px;
+  border-radius: 20px;
+  border: 2px solid $primary-dark;
+  line-height: 20px;
+  font-size: 20px;
+  color: $primary-dark;
+  padding: 12px;
+  background: #fff;
+  svg {
+    height: 18px;
+    width: 18px;
+    fill: $primary-dark;
+    margin-right: 10px;
+  }
+  span {
+    margin-top: 2px;
+  }
+  &--danger {
+    border: 2px solid $danger;
+  }
+  @media (max-width: 350px) {
+    font-size: 17px;
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
+</style>
