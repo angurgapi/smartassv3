@@ -4,7 +4,7 @@
       <template #rules> Try to locate the pair for each picture </template>
     </GameIntroduction>
     <div v-else class="game__action">
-      <div class="game-grid">
+      <div v-if="stage === 2" class="game-grid">
         <PairsTile
           v-for="(img, index) in shuffledImagesArray"
           :key="index"
@@ -14,6 +14,7 @@
           @click="checkFlip(index)"
         />
       </div>
+      <span v-else>Congratulations! You've found all the pairs</span>
     </div>
     <template #footer>
       <template v-if="stage > 1">
@@ -60,15 +61,6 @@ const shuffledImagesArray = ref<string[]>([])
 const isTimerOn = ref(false)
 
 let endAttemptTimeOut: any = null
-// const restartKey: false;
-
-//   watch: {
-//   nailedImages(newVal) {
-//     if (newVal.length == this.shuffledImagesArray.length) {
-//       this.restartGame()
-//     }
-//   },
-// },
 
 const startGame = () => {
   stage.value = 2
@@ -79,55 +71,64 @@ const getShuffledArray = (array: string[]) => {
   return [...array, ...array].sort((a, b) => 0.5 - Math.random())
 }
 const checkFlip = (idx: number) => {
-  //  CLICK OF AN ALREADY REVEALED CARD
-  if (currentAttemptCards.value.includes(idx)) {
-    return
-  }
-
-  // BEGINNING OF A NEW ATTEMPT
-  if (!currentAttemptCards.value.length) {
-    currentAttemptCards.value.push(idx)
-    return
-  }
-  // THIS IS THE 2D CARD OF AN ATTEMPT & it is not a second click on the same card
-  if (currentAttemptCards.value.length === 1) {
-    isTimerOn.value = true
-    currentAttemptCards.value.push(idx)
-    const firstImgIdx = currentAttemptCards.value[0]
-    const secondImgIdx = currentAttemptCards.value[1]
-    // IF TWO CARDS MATCH
-    if (
-      shuffledImagesArray.value[firstImgIdx] ===
-      shuffledImagesArray.value[secondImgIdx]
-    ) {
-      nailedImages.push(firstImgIdx, secondImgIdx)
-      nailedPairsNum.value++
-      endAttempt()
-    } else {
-      endAttemptTimeOut = setTimeout(() => {
+  switch (currentAttemptCards.value.length) {
+    case 0:
+      currentAttemptCards.value.push(idx)
+      break
+    case 1:
+      if (currentAttemptCards.value.includes(idx)) {
+        break
+      } else {
+        currentAttemptCards.value.push(idx)
+        const [firstCard, secondCard] = currentAttemptCards.value
+        if (isMatch(firstCard, secondCard)) {
+          nailedImages.push(firstCard, secondCard)
+          nailedPairsNum.value++
+          endAttemptTimeOut = setTimeout(() => {
+            endAttempt()
+          }, 1000)
+          break
+        } else {
+          isTimerOn.value = true
+          endAttemptTimeOut = setTimeout(() => {
+            endAttempt()
+          }, 5000)
+        }
+        break
+      }
+    case 2:
+      if (currentAttemptCards.value.includes(idx)) {
+        break
+      } else {
         endAttempt()
-      }, 5000)
-    }
-  }
-  // NEW ATTEMPT INITIATED BY USER, NOT TIMER, PREV NOT CLEARED YET
-  else if (currentAttemptCards.value.length === 2) {
-    endAttempt()
-    currentAttemptCards.value.push(idx)
+        currentAttemptCards.value.push(idx)
+        break
+      }
+    default:
+      break
   }
 }
 
+const isMatch = (card1: number, card2: number) => {
+  return shuffledImagesArray.value[card1] === shuffledImagesArray.value[card2]
+}
+
 const endAttempt = () => {
+  currentAttemptCards.value = []
   isTimerOn.value = false
   clearTimeout(endAttemptTimeOut)
-  currentAttemptCards.value = []
-  currentAttemptNum.value++
+  if (nailedPairsNum.value < imageList.length) {
+    currentAttemptNum.value++
+  } else {
+    stage.value = 3
+  }
 }
 
 const restartGame = () => {
   currentAttemptCards.value = []
   currentAttemptNum.value = 1
   nailedImages.length = 0
-  nailedPairsNum.value = 1
+  nailedPairsNum.value = 0
   shuffledImagesArray.value = []
   startGame()
 }

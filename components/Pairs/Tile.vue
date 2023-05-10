@@ -1,5 +1,5 @@
 <template>
-  <div class="tile" :class="{ invisible: nailed }" @click="$emit('click')">
+  <div class="tile" :class="{ invisible: nailed }">
     <transition name="flip">
       <div class="tile__inner">
         <template v-if="revealed">
