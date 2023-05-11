@@ -12,9 +12,9 @@ export const availableLocales: ILocales = {
   en: {
     name: 'English',
     iso: 'en',
-    flag: '🇺🇸',
+    flag: '🇬🇧',
   },
-  id: {
+  ru: {
     name: 'Russian',
     iso: 'ru',
     flag: '🇷🇺',
@@ -49,6 +49,11 @@ export function LanguageManager() {
   watch(localeSetting, (localeSetting) => {
     localeUserSetting.value = localeSetting
     locale.value = localeSetting
+    if (localeSetting === 'ru') {
+      document.documentElement.style.setProperty('--font-primary', 'PT')
+    } else {
+      document.documentElement.style.setProperty('--font-primary', 'Josefin')
+    }
   })
 
   // init locale

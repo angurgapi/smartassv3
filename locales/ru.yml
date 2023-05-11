@@ -10,40 +10,25 @@ pages:
     greeting: Привет, умник!
     time: Пора потренировать мозг
     comma: ,
-    reason_block: 
+    reason_block:
       title: а зачем?
   404:
     title: страница не найдена
-  blank:
-    nav: пусто
-    title: пустая страница
-    description: на этой странице ничего нет
-    just_blank_page_with_title: пустая страница с заголовком
-  post:
-    nav: пост
-    title: пост
-    description: страница поста
-  test:
-    nav: тест
-    title: тестирование
-    description: это страница про тестирование
-    counter: счетчик
-    increment: увеличить
-    decrement: уменьшить
-    reset: сброс
-    identity: личность
-    full_name: имя фамилия
-  getting-started:
-    nav: как начать
-    title: как начать
-    description: стартовая страница
-  games: 
+
+  games:
     title: игры
     nav: игры
     description: Игры для тренировки мозга
     general: Все
     memory: Память
     math: Математика
+
+  words:
+    title: Список слов
+    rule: Запомните как можно больше слов из списка, пока не закончится время
+    listLength: Сколько слов?
+    wordLength: Максимальная длина
+
 banners:
   welcome: hello, welcome to %{app_name}!
 others:

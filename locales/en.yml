@@ -15,29 +15,7 @@ pages:
       title: why even bother
   404:
     title: page not found
-  blank:
-    nav: blank
-    title: blank page
-    description: this is a blank page
-    just_blank_page_with_title: just blank page with title
-  post:
-    nav: post
-    title: post
-    description: this is a post page
-  test:
-    nav: test
-    title: testing
-    description: this is a test page
-    counter: counter
-    increment: increment
-    decrement: decrement
-    reset: reset
-    identity: identity
-    full_name: fullName
-  getting-started:
-    nav: getting started
-    title: getting started
-    description: this is a getting started page
+
   games:
     title: games
     nav: games
@@ -45,6 +23,13 @@ pages:
     general: General
     memory: Memory
     math: Math
+
+  words:
+    title: word list
+    rule: Memorize as many words as possible and write them down when the time's out
+    listLength: How many words?
+    wordLength: Max word length
+
 banners:
   welcome: hello, welcome to %{app_name}!
 others:

@@ -8,8 +8,10 @@
         >
       </div>
       <div class="navbar__right f-row">
-        <nuxt-link class="navbar__link" to="/games">games</nuxt-link>
-        <!-- <LanguageSwitcher /> -->
+        <nuxt-link class="navbar__link" to="/games">{{
+          $t('pages.games.nav')
+        }}</nuxt-link>
+        <LanguageSwitcher />
         <!-- <ThemeSwitcher /> -->
       </div>
     </div>

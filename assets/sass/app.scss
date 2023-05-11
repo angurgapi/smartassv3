@@ -1,9 +1,13 @@
+:root {
+  --font-primary: 'Josefin', sans-serif;
+}
+
 html, body {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
-  font-family: 'Josefin';
+  font-family: var(--font-primary);
   font-size: 22px;
   overflow-y: auto;
   @media(max-width: 800px){
@@ -13,7 +17,6 @@ html, body {
 
 * {
   box-sizing: border-box;
-  font-family: 'Josefin';
 }
 
 // body {
