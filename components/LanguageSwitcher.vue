@@ -44,6 +44,7 @@ const changeLocale = (iso: string) => {
 <style lang="scss" scoped>
 .lang-switcher {
   position: relative;
+  width: 40px;
   &__menu {
     position: absolute;
     // background: $white;
@@ -52,6 +53,7 @@ const changeLocale = (iso: string) => {
   }
 
   &__option {
+    width: 40px;
     display: flex;
   }
 }

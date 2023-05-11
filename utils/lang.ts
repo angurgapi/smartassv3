@@ -49,16 +49,21 @@ export function LanguageManager() {
   watch(localeSetting, (localeSetting) => {
     localeUserSetting.value = localeSetting
     locale.value = localeSetting
-    if (localeSetting === 'ru') {
-      document.documentElement.style.setProperty('--font-primary', 'PT')
-    } else {
-      document.documentElement.style.setProperty('--font-primary', 'Josefin')
-    }
+    setFont()
   })
 
   // init locale
   const init = () => {
     localeSetting.value = getUserLocale()
+    setFont()
+  }
+
+  const setFont = () => {
+    if (localeSetting.value === 'ru') {
+      document.documentElement.style.setProperty('--font-primary', 'PF')
+    } else {
+      document.documentElement.style.setProperty('--font-primary', 'Josefin')
+    }
   }
   locale.value = localeSetting.value
 

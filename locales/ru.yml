@@ -4,14 +4,20 @@ components:
   theme_switcher:
     theme: тема
     change_theme: сменить тему
+
+index:
+  title: smartass
+  greeting: Привет, умник!
+  time: Пора потренировать мозг
+  comma: ,
+  reason_block:
+    title: В чем польза?
+    memory: 'Вы заметили, что стали <span class="highlighted">что-то забывать</span>?<br/><span class="details">Тренировка памяти - лучшее лекарство.</span>'
+    anxiety: 'Пора снизить <span class="highlighted">тревожность</span><br/><span class="details">Крепкий ум без труда победит деструктивные мысли.</span>'
+    decision: 'Принимайте решения <span class="highlighted">быстрее</span><br/><span class="details">Продвигайтесь по жизни и растите профессионально.</span>'
+    brain: 'Формируйте новые <span class="highlighted">нейронные связи</span><br/><span class="details">Это снизит риск деменции и облегчит ваше будущее.</span>'
+    networking: 'Усильте <span class="highlighted">навыки общения</span><br/><span class="details">Сфокусируйтесь на важном - это поможет эффективнее взаимодействовать с людьми</span>'
 pages:
-  index:
-    title: smartass
-    greeting: Привет, умник!
-    time: Пора потренировать мозг
-    comma: ,
-    reason_block:
-      title: а зачем?
   404:
     title: страница не найдена
 
