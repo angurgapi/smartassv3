@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: 200px auto;
   grid-gap: 20px;
-  padding: 24px;
+  padding: 20px;
   align-items: flex-start;
   @media (max-width: 1000px) {
     grid-template-columns: 1fr;

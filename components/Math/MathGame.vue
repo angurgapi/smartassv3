@@ -55,7 +55,7 @@ const pluralizedCount = computed(() => {
 })
 
 const generateEquation = () => {
-  let first, second, operator, result
+  let first, second, operator, result: number | null
 
   do {
     first = Math.floor(Math.random() * 10) + 1
@@ -78,7 +78,12 @@ const generateEquation = () => {
         result = null
         break
     }
-  } while (result === null || !Number.isInteger(result) || result <= 0)
+  } while (
+    result === null ||
+    !Number.isInteger(result) ||
+    result <= 0 ||
+    state.equations.some((eq) => eq.result === result)
+  )
 
   return { first, second, operator, result }
 }
