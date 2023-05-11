@@ -28,7 +28,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { Vue3Lottie } from 'vue3-lottie'
 const components = { Vue3Lottie }
 </script>
