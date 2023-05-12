@@ -2,12 +2,13 @@
   <GameContainer>
     <GameIntroduction v-if="stage === 1" @start="startGame">
       <template #rules>
-        Memorize the pattern of tiles <br />
-        and reproduce it after the timer stops
+        {{ $t('pages.patterns.rule') }}
       </template>
       <template #settings>
         <div class="game-settings f-row">
-          <span class="game-settings__label">Select grid size </span>
+          <span class="game-settings__label">
+            {{ $t('pages.patterns.selectSize') }}
+          </span>
           <SelectList v-model="tilesAmount" :options="options" />
         </div>
       </template>
@@ -25,11 +26,11 @@
         <div class="game__row">
           <button class="btn btn--secondary btn--block" @click="shuffleArray">
             <SvgIcon class="btn-icon" name="shuffle" />
-            shuffle
+            {{ $t('buttons.shuffleBtn') }}
           </button>
           <button class="btn btn--secondary btn--block" @click="startCheck">
             <SvgIcon class="btn-icon" name="forward" />
-            skip
+            {{ $t('buttons.skipBtn') }}
           </button>
         </div>
       </template>
@@ -47,7 +48,7 @@
           class="btn btn--primary pattern-grid__compare"
           @click="comparePatterns"
         >
-          Check
+          {{ $t('buttons.checkBtn') }}
         </button>
       </template>
       <template v-if="stage === 4">
@@ -61,7 +62,9 @@
                 :is-filled="computerArray[index] === 1"
               />
             </div>
-            <span class="game__hint">Original pattern</span>
+            <span class="game__hint">
+              {{ $t('pages.patterns.originalPattern') }}</span
+            >
           </div>
           <div class="f-col">
             <div class="pattern-grid pattern-grid--copy" :class="getGridClass">
@@ -72,11 +75,13 @@
                 :is-filled="userArray[index] === 1"
               />
             </div>
-            <span class="game__hint">Your pattern</span>
+            <span class="game__hint">
+              {{ $t('pages.patterns.userPattern') }}</span
+            >
           </div>
         </div>
         <span v-if="matchPercentage" class="game__result"
-          >{{ matchPercentage }}% match</span
+          >{{ matchPercentage }}% {{ $t('pages.patterns.match') }}</span
         >
       </template>
     </div>
@@ -84,7 +89,9 @@
     <template #footer>
       <template v-if="stage > 1">
         <GameTimer :stop-at="60" :on="stage === 2" @timeout="startCheck" />
-        <button class="btn btn--restart" @click="restartGame">Restart</button>
+        <button class="btn btn--restart" @click="restartGame">
+          {{ $t('buttons.restartBtn') }}
+        </button>
       </template>
     </template>
   </GameContainer>
@@ -169,7 +176,7 @@ const comparePatterns = () => {
       matches++
     }
   }
-  matchPercentage.value = (matches / tilesAmount.value) * 100
+  matchPercentage.value = ~~((matches / tilesAmount.value) * 100)
 }
 
 const restartGame = () => {
@@ -178,20 +185,26 @@ const restartGame = () => {
 }
 
 const calcTileSize = () => {
-  const smallerSide =
-    window.innerHeight >= window.innerWidth
-      ? window.innerWidth
-      : window.innerHeight * 0.5
-
-  const availableGridSize = smallerSide - 100
-  availableTileSize.value = ~~(availableGridSize / Math.sqrt(tilesAmount.value))
+  const pageContent = document.querySelector('.page__content')
+  if (pageContent) {
+    const pageContentHeight = pageContent.getBoundingClientRect().height
+    const pageContentWidth = pageContent.getBoundingClientRect().width
+    const smallerSide =
+      pageContentHeight >= pageContentWidth
+        ? pageContentWidth - 100
+        : pageContentHeight * 0.5
+    const availableGridSize = smallerSide
+    availableTileSize.value = ~~(
+      availableGridSize / Math.sqrt(tilesAmount.value)
+    )
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .pattern-grid {
   width: fit-content;
-  margin: auto;
+  margin: auto auto 16px auto;
   // width: 100%;
   display: grid;
   &--16 {
@@ -207,8 +220,5 @@ const calcTileSize = () => {
   &__compare {
     margin-top: 20px;
   }
-}
-.btn--secondary {
-  margin-top: 20px;
 }
 </style>

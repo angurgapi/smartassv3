@@ -30,17 +30,18 @@
   &__content {
     width: 100%;
     max-width: 1100px;
-    margin: 20px auto;
+    box-sizing: border-box;
+    margin: 15px auto;
     display: flex;
     height: 100%;
-    min-height: 100%;
-    min-height: calc(100vh - 48px - 80px - 40px);
-    // max-height: 100%;
+    min-height: calc(100vh - 48px - 80px - 32px);
+    height: 100%;
+    max-height: 100%;
     flex-direction:column;
     background: #fffade;
     justify-content: flex-start;  
     align-items: center;
-    padding: 24px;
+    padding: 18px;
     @media(min-width: 600px) {
       border-radius: 8px;
     }
@@ -50,7 +51,7 @@
   }
 
   &__title {
-    margin: 10px auto;
+    margin: 0 auto;
   }
 
   &__description {
@@ -72,8 +73,7 @@
         line-height: 60px;
         color: #fff;
         font-size: 24px;
-        text-decoration: none;
-        font-family: 'Josefin';
+        text-decoration: none; 
         background: linear-gradient(
           63deg,
           rgba(60, 13, 96, 1) 0%,
@@ -112,6 +112,7 @@
         color: $primary-dark;
         border-radius: 20px;
         min-width: 100px;
+        padding: 12px;
         font-size: 20px;
         &:hover {
           background-color: $bg-secondary;

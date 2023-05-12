@@ -5,6 +5,13 @@ components:
     theme: тема
     change_theme: сменить тему
 
+buttons:
+  goBtn: Начать
+  skipBtn: Готово
+  checkBtn: Проверить
+  shuffleBtn: Перемешать
+  restartBtn: Начать заново
+
 index:
   title: smartass
   greeting: Привет, умник!
@@ -29,11 +36,52 @@ pages:
     memory: Память
     math: Математика
 
+    bubblesTitle: Скоростная арифметика
+    bubblesDesc: Простые математические вычисления
+    wordTitle: Список слов
+    wordDesc: Запомните список как можно лучше
+    memoTitle: Мемо
+    memoDesc: Найдите пару для каждой карты
+    simonTitle: Саймон
+    simonDesc: Повторите последовательность сигналов
+    patternsTitle: Плитки
+    patternsDesc: Повторите узор из плиток
+
   words:
     title: Список слов
     rule: Запомните как можно больше слов из списка, пока не закончится время
     listLength: Сколько слов?
     wordLength: Максимальная длина
+
+  patterns:
+    pageTitle: Повтори узор
+    rule: Запомните узор из плиток и повторите его
+    selectSize: Выберите размер поля
+    originalPattern: Исходный узор
+    userPattern: Ваш узор
+    match: правильно
+
+  simon:
+    rule: Запомните и повторите последовательность звуковых сигналов
+    speed: Скорость
+    level: Уровень
+
+  pairs:
+    title: Мемо (пары)
+    rule: Найдите пару для каждой картинки
+    congrats: Поздравляем! Вы нашли все пары
+    attempt: Попытка
+    found: Найдено
+    pairsNum: пара, пары, пар
+
+  math:
+    title: Скоростная арифметика
+    rule: Решите как можно больше вычислений. Новые примеры будут появляться, пока не закончится время!
+    expressions: выражение, выражения, выражений
+    solved: Решено
+    hint: Введите результат любого выражения
+    result: Ваш результат
+    seconds: секунд
 
 banners:
   welcome: hello, welcome to %{app_name}!

@@ -39,6 +39,8 @@ const props = defineProps({
   &__item {
     padding: 0.4em;
     text-align: center;
+    background: $yellow-bg;
+    justify-content: center;
     @media (max-width: 600px) {
       padding: 0.6em 0.3em;
     }

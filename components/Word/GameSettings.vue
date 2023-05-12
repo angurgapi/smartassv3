@@ -42,7 +42,6 @@ const emit = defineEmits(['input'])
 // }
 
 watch(settings, (newValue) => {
-  console.log(newValue)
   emit('input', newValue)
 })
 </script>

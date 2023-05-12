@@ -8,7 +8,6 @@
     justify-content: center;
     &__value,
     &__speed {
-      margin-top: 18px;
       display: flex;
     }
 
@@ -80,6 +79,10 @@
       color: $white;
       align-items: flex-start !important;
       margin-left: 20px;
+    }
+
+    &__congrats {
+      text-align: center;
     }
 }
 

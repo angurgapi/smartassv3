@@ -5,6 +5,13 @@ components:
     theme: theme
     change_theme: change theme
 
+buttons:
+  goBtn: Go
+  skipBtn: Ready
+  checkBtn: Check
+  shuffleBtn: Shuffle
+  restartBtn: Restart
+
 index:
   title: smartass
   greeting: Hey stranger
@@ -29,11 +36,52 @@ pages:
     memory: Memory
     math: Math
 
+    bubblesTitle: Speed arithmetics
+    bubblesDesc: Calculate the results of elementary math expressions
+    wordTitle: Word list
+    wordDesc: Reproduce as many words from the list as you remember
+    memoTitle: Memo
+    memoDesc: Memorize the cards' positions and find a match for each card
+    simonTitle: Simon
+    simonDesc: Repeat the random sequence of light & sound signals
+    patternsTitle: Tiles
+    patternsDesc: Reproduce the pattern of tiles
+
   words:
-    title: word list
+    title: Word list
     rule: Memorize as many words as possible and write them down when the time's out
     listLength: How many words?
     wordLength: Max word length
+
+  patterns:
+    pageTitle: Repeat pattern
+    rule: Memorize the pattern of tiles and reproduce it after the timer stops
+    selectSize: Select grid size
+    originalPattern: Original pattern
+    userPattern: Your pattern
+    match: match
+
+  simon:
+    rule: Remember the sound signal sequence and repeat it
+    speed: Speed
+    level: Level
+
+  pairs:
+    title: Memo (pairs)
+    rule: Locate the pair for every picture
+    congrats: Congratulations! You've found all the pairs
+    attempt: Attempt
+    found: Found
+    pairsNum: paid, pairs, pairs
+
+  math:
+    title: Speed arithmetics
+    rule: Solve as many math expressions as you can. New ones will keep appearing until the time's up!
+    expressions: expression, expressions, expressions
+    solved: solved
+    hint: Enter any expression's result here
+    result: Your result is
+    seconds: seconds
 
 banners:
   welcome: hello, welcome to %{app_name}!

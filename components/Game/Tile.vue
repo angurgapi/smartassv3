@@ -1,7 +1,7 @@
 <template>
   <nuxt-link :to="`/games/${game.url}`" class="game-card">
     <img class="game-card__cover" :src="`/assets/${getImgUrl}`" />
-    <div class="game-card__body dark:text-white">
+    <div class="game-card__body">
       <p class="game-card__title">{{ game.title }}</p>
       <span class="game-card__description">{{ game.description }}</span>
     </div>
@@ -25,11 +25,12 @@ const getImgUrl = props.game.image
   width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: 250px;
+  // min-height: 250px;
   box-shadow: $box-shadow--default;
   transition: 0.3s all ease-in-out;
   border-radius: 8px;
-  color: rgb(17, 24, 39);
+  background: $primary-dark;
+  color: $white;
 
   &:hover {
     box-shadow: -1px 0px 10px 0px rgba(34, 60, 80, 0.27);
@@ -46,6 +47,7 @@ const getImgUrl = props.game.image
   &__body {
     padding: 20px;
     display: flex;
+
     flex-direction: column;
     align-items: flex-start;
   }

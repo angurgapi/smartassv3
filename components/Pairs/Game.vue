@@ -1,7 +1,7 @@
 <template>
-  <GameContainer>
+  <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
-      <template #rules> Try to locate the pair for each picture </template>
+      <template #rules> {{ $t('pages.pairs.rule') }} </template>
     </GameIntroduction>
     <div v-else class="game__action">
       <div v-if="stage === 2" class="game-grid">
@@ -14,15 +14,22 @@
           @click="checkFlip(index)"
         />
       </div>
-      <span v-else>Congratulations! You've found all the pairs</span>
+      <span v-else class="game__congrats">{{
+        $t('pages.pairs.congrats')
+      }}</span>
     </div>
     <template #footer>
       <template v-if="stage > 1">
         <GameTimer :on="isTimerOn" />
-        <button class="btn btn--restart" @click="restartGame">Restart</button>
+        <button class="btn btn--restart" @click="restartGame">
+          {{ $t('buttons.restartBtn') }}
+        </button>
         <div class="game__data f-col">
-          <span>Attempt: {{ currentAttemptNum }}</span>
-          <span>Found pairs: {{ nailedPairsNum }}</span>
+          <span>{{ $t('pages.pairs.attempt') }}: {{ currentAttemptNum }}</span>
+          <span
+            >{{ $t('pages.pairs.found') }}: {{ nailedPairsNum }}
+            {{ pluralizedCount }}</span
+          >
         </div>
       </template>
     </template>
@@ -30,15 +37,15 @@
 </template>
 
 <script lang="ts" setup>
+import { pluralizeCount } from '@/utils/pluralizeCount'
+
 const imageList: string[] = [
   'Almond_blossoms',
   'Bowl_with_Daisies',
   'Evening_landscape',
   'Field_with_green_wheat',
   'Irises',
-  'Irises_II',
   'Oleanders',
-  'Olive_grove',
   'Olive_trees',
   'Orchard_with_cypresses',
   'Ravine',
@@ -132,6 +139,10 @@ const restartGame = () => {
   shuffledImagesArray.value = []
   startGame()
 }
+const { t } = useLang()
+const pluralizedCount = computed(() => {
+  return pluralizeCount(nailedPairsNum.value, t('pages.pairs.pairsNum'))
+})
 </script>
 
 <style scoped lang="scss">
@@ -140,7 +151,7 @@ const restartGame = () => {
   display: grid;
   grid-gap: 6px;
   justify-content: center;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   @media (max-width: 1000px) {
     grid-template-columns: repeat(4, 1fr);
   }
