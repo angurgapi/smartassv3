@@ -26,22 +26,24 @@ const isFooterVisible = computed(() => {
 .game-container {
   margin-top: 16px;
   background-size: contain;
-  // width: 100%;
   width: 100%;
   max-width: 800px;
-  // height: 100%;
+  height: 100%;
   box-shadow: $box-shadow--hard;
   border-radius: 8px;
   @media (min-width: 1200px) {
-    //
-    // height: 70vh;
     max-height: 100%;
   }
+
   &__body {
     width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     background: $white;
+    @media (max-width: 500px) {
+      min-height: 50vh;
+    }
   }
   &__footer {
     width: 100%;

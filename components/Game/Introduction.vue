@@ -28,17 +28,20 @@ const props = defineProps({
 <style lang="scss" scoped>
 .game-intro {
   width: 100%;
-  min-height: 300px;
-  position: relative;
+  height: 100%;
+  min-height: 100%;
+
+  // position: relative;
   &__inner {
     width: 100%;
     height: 100%;
-    position: absolute;
+    // position: absolute;
     top: 0;
     left: 0;
     background: rgba(33, 54, 95, 55%);
     backdrop-filter: blur(8px);
     padding: 12px;
+    min-height: 50vh;
   }
   &__rules {
     width: 600px;

@@ -1,5 +1,5 @@
 <template>
-  <GameContainer>
+  <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
       <template #rules>
         {{ $t('pages.patterns.rule') }}
@@ -86,13 +86,11 @@
       </template>
     </div>
     <!-- end of body -->
-    <template #footer>
-      <template v-if="stage > 1">
-        <GameTimer :stop-at="60" :on="stage === 2" @timeout="startCheck" />
-        <button class="btn btn--restart" @click="restartGame">
-          {{ $t('buttons.restartBtn') }}
-        </button>
-      </template>
+    <template v-if="stage > 1" #footer>
+      <GameTimer :stop-at="60" :on="stage === 2" @timeout="startCheck" />
+      <button class="btn btn--restart" @click="restartGame">
+        {{ $t('buttons.restartBtn') }}
+      </button>
     </template>
   </GameContainer>
 </template>

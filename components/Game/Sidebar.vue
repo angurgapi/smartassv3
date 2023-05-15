@@ -37,9 +37,9 @@ const remainingGames = computed(() => {
 .game-sidebar {
   display: flex;
   flex-direction: column;
-  @media (max-width: 900px) {
-    display: none;
-  }
+  // @media (max-width: 900px) {
+  //   display: none;
+  // }
   margin-top: 15px;
   padding: 30px 18px;
   &__suggestions {

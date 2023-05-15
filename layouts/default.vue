@@ -3,7 +3,7 @@
     <NavBar />
     <div class="wrapper__content">
       <div class="page">
-        <GameSidebar />
+        <GameSidebar v-if="screen.higherThan(Size.MEDIUM)" />
         <div class="page__content">
           <slot />
         </div>
@@ -16,6 +16,11 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import { Size } from '~/composables/useScreen'
+
+const screen = useScreen()
+</script>
 <style lang="scss" scoped>
 .wrapper {
   &:deep(.navbar) {
