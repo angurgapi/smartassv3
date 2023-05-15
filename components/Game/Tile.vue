@@ -28,9 +28,9 @@ const props = defineProps({
   },
 })
 
-const getImgUrl = props.game.image
-  ? `games/${props.game.image}.png`
-  : 'placeholder.webp'
+const getImgUrl = computed(() => {
+  return props.game.image ? `games/${props.game.image}.png` : 'placeholder.webp'
+})
 </script>
 
 <style lang="scss" scoped>
