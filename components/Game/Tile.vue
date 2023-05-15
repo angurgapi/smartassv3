@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, PropType } from 'vue'
+import { PropType } from 'vue'
 import { GameData } from '~~/types/GameData'
 
 const props = defineProps({
