@@ -26,17 +26,17 @@
 
           <template #content>
             <TabPanel v-show="currentTab === 'general'">
-              <span>{{ $t('pages.games.general') }}</span>
-              <GameGrid :games-array="gamesArray" />
+              <!-- <span>{{ $t('pages.games.general') }}</span> -->
+              <GameGrid :games-array="getAllGames" />
             </TabPanel>
 
             <TabPanel v-show="currentTab === 'memory'">
-              <span>{{ $t('pages.games.memory') }}</span>
+              <!-- <span>{{ $t('pages.games.memory') }}</span> -->
               <GameGrid :games-array="getMemoryArray" />
             </TabPanel>
 
             <TabPanel v-show="currentTab === 'math'">
-              <span>{{ $t('pages.games.math') }}</span>
+              <!-- <span>{{ $t('pages.games.math') }}</span> -->
               <GameGrid :games-array="getMathArray" />
             </TabPanel>
           </template>
@@ -47,13 +47,24 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { capitalize } from '~/utils/str'
-import { Size } from '~/composables/useScreen'
+
+import { createGamesArray } from '@/mixins/gamesArray'
+
+definePageMeta({
+  layout: 'page',
+})
 
 // composable
 const { t } = useLang()
-const screen = useScreen()
+
+const games = ref(createGamesArray(t))
+
+const localeSetting = useState<string>('locale.setting')
+
+watch(localeSetting, () => {
+  games.value = createGamesArray(t)
+})
 
 const currentTab = ref('general')
 
@@ -67,54 +78,14 @@ useHead(() => ({
   ],
 }))
 
-const gamesArray = [
-  {
-    id: 1,
-    title: t('pages.games.memoTitle'),
-    description: t('pages.games.memoDesc'),
-    image: 'pairs',
-    url: 'pairs',
-    type: 'memory',
-  },
-  {
-    id: 2,
-    title: t('pages.games.simonTitle'),
-    description: t('pages.games.simonDesc'),
-    image: 'simon',
-    url: 'simon',
-    type: 'memory',
-  },
-  {
-    id: 3,
-    title: t('pages.games.wordTitle'),
-    description: t('pages.games.wordDesc'),
-    url: 'words',
-    image: 'wordlist',
-    type: 'memory',
-  },
-  {
-    id: 4,
-    title: t('pages.games.bubblesTitle'),
-    description: t('pages.games.bubblesDesc'),
-    url: 'math',
-    image: 'math',
-    type: 'math',
-  },
-  {
-    id: 5,
-    title: t('pages.games.patternsTitle'),
-    description: t('pages.games.patternsDesc'),
-    url: 'patterns',
-    type: 'memory',
-    image: 'patterns',
-  },
-]
+const getAllGames = computed(() => games.value)
+
 const getMemoryArray = computed(() =>
-  gamesArray.filter((game) => game.type === 'memory')
+  games.value.filter((game) => game.type === 'memory')
 )
 
 const getMathArray = computed(() =>
-  gamesArray.filter((game) => game.type === 'math')
+  games.value.filter((game) => game.type === 'math')
 )
 
 const changeTab = (tabName: string) => {

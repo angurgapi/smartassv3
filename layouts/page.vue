@@ -16,5 +16,8 @@
   &:deep(.navbar) {
     background-color: rgba(17, 24, 39, 0.9);
   }
+  &:deep(.navbar__link) {
+    color: $white;
+  }
 }
 </style>

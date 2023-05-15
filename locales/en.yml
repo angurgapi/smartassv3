@@ -24,6 +24,12 @@ index:
     decision: 'Faster <span class="highlighted">decision-making</span><br/><span class="details">Navigate through life and perform better as a professional.</span>'
     brain: 'Build more <span class="highlighted">neural pathways</span><br/><span class="details">Reduce the risk of dementia, make your future easier.</span>'
     networking: 'Improve <span class="highlighted">communication</span><br/><span class="details">Interact with people more efficiently having a well-focused mind.</span>'
+  offer_block:
+    title: What's on the table
+    body:
+      Brain fitness is just like pilates or morning jogging<span>:</span> you succeed after <span class="highlighted">continious practice</span>.<br>
+      If you're ready to try, we offer several kinds of exercises.
+      Some of them are inspired by good old children <span class="highlighted">games</span>. Some are borrowed from the system developed by Ryuta Kawashima, a japanese <span class="highlighted">neuroscientist</span>.
 pages:
   404:
     title: page not found

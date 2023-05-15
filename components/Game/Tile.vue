@@ -1,19 +1,32 @@
 <template>
   <nuxt-link :to="`/games/${game.url}`" class="game-card">
-    <img class="game-card__cover" :src="`/assets/${getImgUrl}`" />
+    <div
+      class="game-card__cover"
+      :style="`background-image: url(/assets/${getImgUrl})`"
+    />
     <div class="game-card__body">
       <p class="game-card__title">{{ game.title }}</p>
-      <span class="game-card__description">{{ game.description }}</span>
+      <span v-if="!isMini" class="game-card__description">{{
+        game.description
+      }}</span>
     </div>
   </nuxt-link>
 </template>
 
 <script lang="ts" setup>
+import { defineProps, PropType } from 'vue'
 import { GameData } from '~~/types/GameData'
 
-const props = defineProps<{
-  game: GameData
-}>()
+const props = defineProps({
+  game: {
+    type: Object as PropType<GameData>,
+    required: true,
+  },
+  isMini: {
+    type: Boolean,
+    default: false,
+  },
+})
 
 const getImgUrl = props.game.image
   ? `games/${props.game.image}.png`
@@ -23,9 +36,8 @@ const getImgUrl = props.game.image
 <style lang="scss" scoped>
 .game-card {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  // min-height: 250px;
+  display: grid;
+  grid-template-columns: 1fr;
   box-shadow: $box-shadow--default;
   transition: 0.3s all ease-in-out;
   border-radius: 8px;
@@ -37,23 +49,25 @@ const getImgUrl = props.game.image
   }
   &__cover {
     width: 100%;
-    height: 50%;
-    min-height: 125px;
+    height: 100%;
+    min-height: 100px;
     background-size: cover;
-    // background-size: contain;
     background-position: center;
+    aspect-ratio: 4/3;
     border-radius: 8px 8px 0 0;
   }
   &__body {
     padding: 20px;
     display: flex;
-
     flex-direction: column;
     align-items: flex-start;
+    @media (max-width: 430px) {
+      padding: 12px;
+    }
   }
   &__title {
     font-size: 20px;
-    margin: 10px 0 10px 0;
+    margin: 0;
     font-weight: 600;
   }
   &__description {

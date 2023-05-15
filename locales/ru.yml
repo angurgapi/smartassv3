@@ -23,7 +23,13 @@ index:
     anxiety: 'Пора снизить <span class="highlighted">тревожность</span><br/><span class="details">Крепкий ум без труда победит деструктивные мысли.</span>'
     decision: 'Принимайте решения <span class="highlighted">быстрее</span><br/><span class="details">Продвигайтесь по жизни и растите профессионально.</span>'
     brain: 'Формируйте новые <span class="highlighted">нейронные связи</span><br/><span class="details">Это снизит риск деменции и облегчит ваше будущее.</span>'
-    networking: 'Усильте <span class="highlighted">навыки общения</span><br/><span class="details">Сфокусируйтесь на важном - это поможет эффективнее взаимодействовать с людьми</span>'
+    networking: 'Усильте <span class="highlighted">навыки общения</span><br/><span class="details">Сфокусируйтесь на важном - это поможет эффективнее взаимодействовать с людьми</span>.'
+  offer_block:
+    title: Как мы будем тренироваться
+    body:
+      Тренировка мозга - это как пилатес или утренние пробежки<span>:</span> добиться успехов поможет <span class="highlighted">регулярная практика</span>.<br>
+      Если вы готовы попробовать, мы предлагаем несколько видов упражнений.
+      Некоторые из них основаны на детских <span class="highlighted">играх</span>. Некоторые позаимствованы из методики Рюты Кавашимы, японского <span class="highlighted">нейробиолога</span>.
 pages:
   404:
     title: страница не найдена
@@ -39,7 +45,7 @@ pages:
     bubblesTitle: Скоростная арифметика
     bubblesDesc: Простые математические вычисления
     wordTitle: Список слов
-    wordDesc: Запомните список как можно лучше
+    wordDesc: Запомните слова из списка
     memoTitle: Мемо
     memoDesc: Найдите пару для каждой карты
     simonTitle: Саймон

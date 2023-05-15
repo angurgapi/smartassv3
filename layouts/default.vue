@@ -2,7 +2,12 @@
   <div class="wrapper">
     <NavBar />
     <div class="wrapper__content">
-      <slot />
+      <div class="page">
+        <GameSidebar />
+        <div class="page__content">
+          <slot />
+        </div>
+      </div>
     </div>
 
     <slot name="footer">
@@ -16,5 +21,9 @@
   &:deep(.navbar) {
     background: $gradient-blue;
   }
+}
+
+.page {
+  flex-direction: row;
 }
 </style>
