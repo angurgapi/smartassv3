@@ -14,7 +14,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .games-grid {
-  margin: 40px auto 40px;
+  margin: 10px auto 40px;
   display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));

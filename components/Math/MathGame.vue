@@ -1,41 +1,49 @@
 <template>
-  <div class="math-game f-col">
-    <div class="math-game__container">
-      <MathBubble
-        v-for="(equation, index) in state.equations"
-        :key="index"
-        class="math-bubble"
-        :data="equation"
-      />
+  <GameContainer :stage="stage">
+    <GameIntroduction v-if="stage === 1" @start="startGame">
+      <template #rules> {{ $t('pages.math.rule') }} </template>
+    </GameIntroduction>
+
+    <div v-else class="game__action">
+      <div v-if="stage === 2" class="math-game f-col">
+        <div class="math-game__container">
+          <MathBubble
+            v-for="(equation, index) in state.equations"
+            :key="index"
+            :data="equation"
+          />
+        </div>
+        <div class="game-input">
+          <FormTextInput
+            v-if="state.equations.length"
+            v-model="currentResult"
+            type="number"
+          />
+          <span class="game-input__hint">
+            {{ $t('pages.math.hint') }}
+          </span>
+        </div>
+      </div>
+      <div v-if="stage === 3" class="game__congrats">
+        {{ $t('pages.math.result') }}: {{ solvedExpressions }}
+        {{ pluralizedCount }} / {{ timerDuration }}
+        {{ $t('pages.math.seconds') }}
+      </div>
     </div>
 
-    <!-- <input
-      v-if="state.equations.length"
-      v-model="currentResult"
-      class="math-game__input"
-      type="text"
-    /> -->
-    <div class="game-input">
-      <FormTextInput
-        v-if="state.equations.length"
-        v-model="currentResult"
-        type="number"
-      />
-      <span class="game-input__hint"> Enter any expression's result here </span>
-    </div>
-    <span v-if="solvedExpressions"
-      >solved {{ solvedExpressions }} {{ pluralizedCount }}</span
-    >
-    <GameTimer :on="isGameOn" stop-at="60" @timeout="endGame" />
-    <div v-if="!isGameOn" class="math-game__overlay f-col">
-      <span v-if="isGameOver && solvedExpressions" class="math-game__result"
-        >You've nailed {{ solvedExpressions }} {{ pluralizedCount }}
-      </span>
-      <button class="btn btn--restart" @click="isGameOn = true">
-        play <span v-if="isGameOver">again</span>
+    <template #footer>
+      <GameTimer :on="isGameOn" :stop-at="timerDuration" @timeout="endGame" />
+      <button class="btn btn--restart" @click="restartGame">
+        {{ $t('buttons.restartBtn') }}
       </button>
-    </div>
-  </div>
+      <div class="game__data f-col">
+        <span v-if="solvedExpressions"
+          >{{ $t('pages.math.solved') }} {{ solvedExpressions }}
+          {{ pluralizedCount }}</span
+        >
+      </div>
+    </template>
+  </GameContainer>
 </template>
 
 <script lang="ts" setup>
@@ -47,15 +55,38 @@ const solvedExpressions = ref(0)
 const isGameOn = ref(false)
 const isGameOver = ref(false)
 
+const timerDuration = 60
+
+const stage = ref(1)
+
+const { t } = useLang()
+
 const state = reactive({
   equations: [] as any[],
 })
 const pluralizedCount = computed(() => {
-  return pluralizeCount(solvedExpressions.value, 'expression', 'expressions')
+  return pluralizeCount(solvedExpressions.value, t('pages.math.expressions'))
 })
 
+const startGame = () => {
+  stage.value = 2
+  isGameOn.value = true
+  populateExpressions()
+}
+
+const restartGame = () => {
+  stage.value = 2
+  isGameOn.value = false
+  solvedExpressions.value = 0
+  state.equations.length = 0
+  populateExpressions()
+  setTimeout(() => {
+    isGameOn.value = true
+  }, 100)
+}
+
 const generateEquation = () => {
-  let first, second, operator, result
+  let first, second, operator, result: number | null
 
   do {
     first = Math.floor(Math.random() * 10) + 1
@@ -78,7 +109,12 @@ const generateEquation = () => {
         result = null
         break
     }
-  } while (result === null || !Number.isInteger(result) || result <= 0)
+  } while (
+    result === null ||
+    !Number.isInteger(result) ||
+    result <= 0 ||
+    state.equations.some((eq) => eq.result === result)
+  )
 
   return { first, second, operator, result }
 }
@@ -105,30 +141,24 @@ const removeEquation = (newValue: number) => {
   }
 }
 const populateExpressions = () => {
-  while (state.equations.length < 10) {
+  const windowWidth = window.innerWidth
+  const maxExpressions = windowWidth > 600 ? 14 : 12
+  while (state.equations.length < maxExpressions) {
     state.equations.push(generateEquation())
   }
 }
 
 const endGame = () => {
-  isGameOn.value = false
-  isGameOver.value = true
-  solvedExpressions.value = 0
+  // isGameOn.value = false
+  // isGameOver.value = true
+  // solvedExpressions.value = 0
+  stage.value = 3
 }
-
-onMounted(() => {
-  populateExpressions()
-})
 </script>
 
 <style lang="scss" scoped>
 .math-game {
-  border-radius: 8px;
-  padding: 24px;
-  max-width: 600px;
-  align-items: center;
-  width: 90%;
-  position: relative;
+  margin: auto;
   &__container {
     width: 100%;
     display: grid;

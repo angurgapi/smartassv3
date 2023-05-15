@@ -4,46 +4,92 @@ components:
   theme_switcher:
     theme: тема
     change_theme: сменить тему
+
+buttons:
+  goBtn: Начать
+  skipBtn: Готово
+  checkBtn: Проверить
+  shuffleBtn: Перемешать
+  restartBtn: Начать заново
+
+index:
+  title: smartass
+  greeting: Привет, умник!
+  time: Пора потренировать мозг
+  comma: ,
+  reason_block:
+    title: В чем польза?
+    memory: 'Вы заметили, что стали <span class="highlighted">что-то забывать</span>?<br/><span class="details">Тренировка памяти - лучшее лекарство.</span>'
+    anxiety: 'Пора снизить <span class="highlighted">тревожность</span><br/><span class="details">Крепкий ум без труда победит деструктивные мысли.</span>'
+    decision: 'Принимайте решения <span class="highlighted">быстрее</span><br/><span class="details">Продвигайтесь по жизни и растите профессионально.</span>'
+    brain: 'Формируйте новые <span class="highlighted">нейронные связи</span><br/><span class="details">Это снизит риск деменции и облегчит ваше будущее.</span>'
+    networking: 'Усильте <span class="highlighted">навыки общения</span><br/><span class="details">Сфокусируйтесь на важном - это поможет эффективнее взаимодействовать с людьми</span>.'
+  offer_block:
+    title: Как мы будем тренироваться
+    body:
+      Тренировка мозга - это как пилатес или утренние пробежки<span>:</span> добиться успехов поможет <span class="highlighted">регулярная практика</span>.<br>
+      Если вы готовы попробовать, мы предлагаем несколько видов упражнений.
+      Некоторые из них основаны на детских <span class="highlighted">играх</span>. Некоторые позаимствованы из методики Рюты Кавашимы, японского <span class="highlighted">нейробиолога</span>.
 pages:
-  index:
-    title: smartass
-    greeting: Привет, умник!
-    time: Пора потренировать мозг
-    comma: ,
-    reason_block: 
-      title: а зачем?
   404:
     title: страница не найдена
-  blank:
-    nav: пусто
-    title: пустая страница
-    description: на этой странице ничего нет
-    just_blank_page_with_title: пустая страница с заголовком
-  post:
-    nav: пост
-    title: пост
-    description: страница поста
-  test:
-    nav: тест
-    title: тестирование
-    description: это страница про тестирование
-    counter: счетчик
-    increment: увеличить
-    decrement: уменьшить
-    reset: сброс
-    identity: личность
-    full_name: имя фамилия
-  getting-started:
-    nav: как начать
-    title: как начать
-    description: стартовая страница
-  games: 
+
+  games:
     title: игры
     nav: игры
     description: Игры для тренировки мозга
     general: Все
     memory: Память
     math: Математика
+    more: Еще
+
+    bubblesTitle: Скоростная арифметика
+    bubblesDesc: Простые математические вычисления
+    wordTitle: Список слов
+    wordDesc: Запомните слова из списка
+    memoTitle: Мемо
+    memoDesc: Найдите пару для каждой карты
+    simonTitle: Саймон
+    simonDesc: Повторите последовательность сигналов
+    patternsTitle: Плитки
+    patternsDesc: Повторите узор из плиток
+
+  words:
+    title: Список слов
+    rule: Запомните как можно больше слов из списка, пока не закончится время
+    listLength: Сколько слов?
+    wordLength: Максимальная длина
+
+  patterns:
+    pageTitle: Повтори узор
+    rule: Запомните узор из плиток и повторите его
+    selectSize: Выберите размер поля
+    originalPattern: Исходный узор
+    userPattern: Ваш узор
+    match: правильно
+
+  simon:
+    rule: Запомните и повторите последовательность звуковых сигналов
+    speed: Скорость
+    level: Уровень
+
+  pairs:
+    title: Мемо (пары)
+    rule: Найдите пару для каждой картинки
+    congrats: Поздравляем! Вы нашли все пары
+    attempt: Попытка
+    found: Найдено
+    pairsNum: пара, пары, пар
+
+  math:
+    title: Скоростная арифметика
+    rule: Решите как можно больше вычислений. Новые примеры будут появляться, пока не закончится время!
+    expressions: выражение, выражения, выражений
+    solved: Решено
+    hint: Введите результат любого выражения
+    result: Ваш результат
+    seconds: секунд
+
 banners:
   welcome: hello, welcome to %{app_name}!
 others:

@@ -3,7 +3,7 @@
     class="sound-btn"
     :class="{ 'sound-btn--lit': isLit }"
     :style="`background-color:${btn.color}`"
-    @click="$emit('click', btn.value)"
+    @click="$emit('click')"
   />
 </template>
 

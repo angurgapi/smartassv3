@@ -13,7 +13,7 @@ export type ScreenSize =
 
 export const defaultScreenConfig = {
   [Size.SMALL]: 576,
-  [Size.MEDIUM]: 768,
+  [Size.MEDIUM]: 850,
   [Size.LARGE]: 992,
   [Size.EXTRA_LARGE]: 1200,
 }
@@ -27,7 +27,8 @@ export const useScreen = () => {
   const current = ref<ScreenSize>(Size.SMALL)
 
   const getSize = (width?: number) => {
-    if (width === undefined) width = screenSize.width
+    screenSize.width = window.innerWidth
+    if (width === undefined) width = window.innerWidth
     const {
       [Size.SMALL]: sm,
       [Size.MEDIUM]: md,
@@ -64,9 +65,9 @@ export const useScreen = () => {
   }
 
   onMounted(() => {
+    getSize(window.innerWidth)
     if (typeof window === 'undefined') return
     window.addEventListener('resize', onWindowResize)
-    getSize(window.innerWidth)
   })
 
   onUnmounted(() => {

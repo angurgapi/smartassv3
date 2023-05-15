@@ -8,7 +8,6 @@
     justify-content: center;
     &__value,
     &__speed {
-      margin-top: 18px;
       display: flex;
     }
 
@@ -81,6 +80,10 @@
       align-items: flex-start !important;
       margin-left: 20px;
     }
+
+    &__congrats {
+      text-align: center;
+    }
 }
 
   .game-input {
@@ -93,6 +96,7 @@
   }
 
   .game-settings {
+    margin-bottom: 16px;
     &__label {
       margin-right: 16px;
     }

@@ -9,7 +9,9 @@
         <slot name="settings"></slot>
       </div>
 
-      <button class="btn btn--primary" @click="$emit('start')">Go</button>
+      <button class="btn btn--primary" @click="$emit('start')">
+        {{ $t('buttons.goBtn') }}
+      </button>
     </div>
   </div>
 </template>
@@ -26,16 +28,20 @@ const props = defineProps({
 <style lang="scss" scoped>
 .game-intro {
   width: 100%;
-  min-height: 400px;
-  position: relative;
+  height: 100%;
+  min-height: 100%;
+
+  // position: relative;
   &__inner {
     width: 100%;
     height: 100%;
-    position: absolute;
+    // position: absolute;
     top: 0;
     left: 0;
     background: rgba(33, 54, 95, 55%);
     backdrop-filter: blur(8px);
+    padding: 12px;
+    min-height: 50vh;
   }
   &__rules {
     width: 600px;
@@ -50,7 +56,7 @@ const props = defineProps({
   }
 
   .btn--primary {
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 </style>

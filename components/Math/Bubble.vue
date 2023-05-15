@@ -21,7 +21,9 @@ const props = defineProps({
 .math-bubble {
   border-radius: 10px;
   padding: 12px;
-  background: #fff;
+  background-color: $yellow-light;
   transition: 0.4s all ease-in-out;
+  box-shadow: $box-shadow--default;
+  color: $primary-dark;
 }
 </style>

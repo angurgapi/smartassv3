@@ -3,8 +3,8 @@
     <div class="hero__content f-col">
       <Brain />
       <div class="hero__text">
-        <h1 class="hero__title">{{ $t('pages.index.greeting') }}</h1>
-        <p class="hero__description" v-html="$t('pages.index.time')" />
+        <h1 class="hero__title">{{ $t('index.greeting') }}</h1>
+        <p class="hero__description" v-html="$t('index.time')" />
       </div>
     </div>
   </div>
@@ -42,7 +42,6 @@
   &__title {
     margin: 0;
     font-size: 3.4em;
-    font-family: 'Lucky';
   }
 
   &__description {

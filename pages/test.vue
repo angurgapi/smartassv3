@@ -1,20 +1,33 @@
+<!-- eslint-disable no-eval -->
 <template>
   <NuxtLayout>
     <div>
       kek
       <p>{{ testVal }}</p>
       <span>{{ count }}</span>
-      <button @click="count++">++</button>
-      <div class="glass-container">
+      <!-- <button @click="callFunction">call</button> -->
+      <div class="scquare-string">
+        <div
+          v-for="(row, idx) in stringMatrix"
+          :key="idx"
+          class="square-string__row"
+        >
+          <span
+            v-for="(letter, index) in row"
+            :key="index"
+            class="square-string__letter"
+            >{{ letter }}</span
+          >
+        </div>
+      </div>
+      <!-- <div class="glass-container">
         <img
           src="https://news.artnet.com/app/news-upload/2019/12/maurizio-cattelan-banana.jpg"
         />
         <div class="glass">
           <div v-for="number in 400" :key="number" class="glass__tile" />
         </div>
-      </div>
-
-      <!-- <TestList /> -->
+      </div> -->
     </div>
   </NuxtLayout>
 </template>
@@ -25,6 +38,13 @@ const testVal = 'kek'
 
 const count = ref(0)
 provide('count', count)
+
+const testStr = "I.was.going.fishing.that.morning.at.ten.o'clock"
+console.log(testStr.length)
+
+const squareString = 'abcd\nefgh\nijkl\nmnop'
+const stringMatrix = squareString.split('\n')
+const squareSize = stringMatrix.length
 </script>
 
 <style lang="scss" scoped>
@@ -64,6 +84,22 @@ provide('count', count)
       background: rgba(178, 208, 231, 0.26);
       backdrop-filter: blur(17.9px);
     }
+  }
+}
+
+.square-string {
+  &__row {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__letter {
+    width: 22px;
+    height: 22px;
+    background: $white;
+    border: 1px solid black;
+    text-align: center;
   }
 }
 </style>

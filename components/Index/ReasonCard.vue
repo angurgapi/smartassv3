@@ -1,17 +1,21 @@
 <template>
   <div class="reason-card card hidden">
     <div class="reason-card__icon">
-      <img :src="`/assets/landing/${card.icon}.png`" />
+      <img :src="`/assets/landing/${icon}.png`" />
     </div>
-    <div class="reason-card__content" v-html="card.content" />
+    <div class="reason-card__content" v-html="content" />
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps({
-  card: {
-    type: Object,
-    default: () => {},
+  icon: {
+    type: String,
+    default: '',
+  },
+  content: {
+    type: String,
+    default: '',
   },
 })
 </script>
@@ -19,7 +23,6 @@ defineProps({
 <style lang="scss">
 .reason-card {
   width: 100%;
-  display: flex;
   padding: 20px;
   user-select: none;
   align-items: center;

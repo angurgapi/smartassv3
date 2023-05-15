@@ -34,6 +34,7 @@ const startTimer = () => {
 }
 
 const stopTimer = () => {
+  isEnding.value = false
   if (timerInterval) {
     clearInterval(timerInterval)
     timerInterval = null

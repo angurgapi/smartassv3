@@ -41,10 +41,6 @@ const slots = useSlots()
 
 const modelValue = ref(props.modelValue)
 
-watch(modelValue, (newValue) => {
-  emit('update:modelValue', newValue)
-})
-
 watch(
   () => props.modelValue,
   (newValue) => {
@@ -58,6 +54,7 @@ function onInput(event: Event) {
     sanitizedValue = parseInt(sanitizedValue.replace(/\D/g, '')) || 0
   }
   modelValue.value = sanitizedValue
+  emit('update:modelValue', modelValue.value)
 }
 </script>
 
