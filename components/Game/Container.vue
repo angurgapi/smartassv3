@@ -33,7 +33,9 @@ const isFooterVisible = computed(() => {
   box-shadow: $box-shadow--hard;
   border-radius: 8px;
   @media (min-width: 1200px) {
-    max-height: 70vh;
+    //
+    // height: 70vh;
+    max-height: 100%;
   }
   &__body {
     width: 100%;

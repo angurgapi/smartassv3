@@ -57,13 +57,10 @@ const getImgUrl = computed(() => {
     border-radius: 8px 8px 0 0;
   }
   &__body {
-    padding: 20px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    @media (max-width: 430px) {
-      padding: 12px;
-    }
   }
   &__title {
     font-size: 20px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="game-sidebar f-col">
+  <div class="game-sidebar">
     More
     <div class="game-sidebar__suggestions">
       <GameTile
@@ -35,14 +35,15 @@ const remainingGames = computed(() => {
 
 <style lang="scss" scoped>
 .game-sidebar {
+  display: flex;
+  flex-direction: column;
   @media (max-width: 900px) {
     display: none;
   }
   margin-top: 15px;
-  padding: 18px;
-  width: 150px;
+  padding: 30px 18px;
   &__suggestions {
-    margin-top: 20px;
+    margin-top: 25px;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 16px;

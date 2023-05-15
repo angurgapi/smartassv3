@@ -17,7 +17,9 @@
 
       <p class="landing-section__text" v-html="getTextHtml" />
 
-      <nuxt-link class="btn btn--primary mt-20" to="/games">Work out</nuxt-link>
+      <nuxt-link class="btn btn--primary mt-20" to="/games">{{
+        $t('buttons.goBtn')
+      }}</nuxt-link>
     </div>
   </section>
 </template>
