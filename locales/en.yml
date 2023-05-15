@@ -41,6 +41,7 @@ pages:
     general: General
     memory: Memory
     math: Math
+    more: More
 
     bubblesTitle: Speed arithmetics
     bubblesDesc: Calculate the results of elementary math expressions

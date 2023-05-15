@@ -1,6 +1,6 @@
 <template>
   <div class="game-sidebar">
-    More
+    {{ $t('pages.games.more') }}
     <div class="game-sidebar__suggestions">
       <GameTile
         v-for="(game, i) in remainingGames"

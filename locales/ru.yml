@@ -41,6 +41,7 @@ pages:
     general: Все
     memory: Память
     math: Математика
+    more: Еще
 
     bubblesTitle: Скоростная арифметика
     bubblesDesc: Простые математические вычисления
