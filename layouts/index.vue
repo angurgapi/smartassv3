@@ -5,7 +5,13 @@
       <IndexHero />
     </div>
     <slot />
+<<<<<<< HEAD
     <Footer />
+=======
+    <slot name="footer">
+      <Footer />
+    </slot>
+>>>>>>> origin/main
   </div>
 </template>
 
@@ -27,7 +33,11 @@
     #634a9f,
     #785cb9
   );
+<<<<<<< HEAD
   &:deep(.navbar__link) {
+=======
+  &::v-deep .navbar__link {
+>>>>>>> origin/main
     color: $white;
   }
 }

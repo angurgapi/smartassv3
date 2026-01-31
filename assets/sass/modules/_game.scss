@@ -1,4 +1,5 @@
 .game {
+<<<<<<< HEAD
   margin-top: 20px;
   padding: 10px;
   max-width: 100%;
@@ -99,3 +100,107 @@
     margin-right: 16px;
   }
 }
+=======
+    margin-top: 20px;
+    padding: 10px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__value,
+    &__speed {
+      display: flex;
+    }
+
+    &__description {
+      font-size: 1.1em;
+      color: $primary-dark;
+      opacity: .8;
+    }
+    &__controls {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        .btn--primary {
+          margin-left: 20px;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+        }
+    }
+    &__input {
+        height: 50px;
+        font-size: 30px;
+        border-radius: 8px;
+        padding: 8px;
+        outline: none;
+        border: 2px solid rgba(0, 0, 0, 0.8);
+        width: 100px;
+        text-align: center;      
+      }
+    &__modal {
+        max-width: 300px;
+        padding: 20px;
+    }
+
+    &__action {
+      width: 100%;
+      padding: 20px;
+    }
+
+    &__row {
+      width: 100%;
+      display: grid;
+      grid-gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      @media(max-width: 800px) {
+        grid-template-columns: 1fr;
+
+      }
+    }
+
+    &__hint {
+      font-size: .7em;
+      opacity: .7;
+      margin-top: 10px;
+    }
+
+    &__stats {
+      font-size: 1em;
+      color: $primary-dark;
+      font-family: 'Rubik';
+      margin-top: 20px;
+    }
+
+    &__data {
+      color: $white;
+      align-items: flex-start !important;
+      margin-left: 20px;
+    }
+
+    &__congrats {
+      text-align: center;
+    }
+}
+
+  .game-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &__hint {
+     font-size: 0.6em;
+    }
+  }
+
+  .game-settings {
+    margin-bottom: 16px;
+    &__label {
+      margin-right: 16px;
+    }
+  }
+>>>>>>> origin/main

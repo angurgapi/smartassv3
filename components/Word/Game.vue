@@ -12,10 +12,14 @@
       </template>
       <template v-if="stage === 3">
         <div class="word-game__check f-col">
+<<<<<<< HEAD
           <div class="game__description justify-center f-col">
             <p>Do you remember the words?</p>
             <p class="text-sm text-gray">Type them in one by one</p>
           </div>
+=======
+          <div class="game__description">Do you remember the words?</div>
+>>>>>>> origin/main
           <div class="word-game__row">
             <FormTextInput v-model="currentGuess" @keyup.enter="checkGuess" />
             <button class="btn word-game__submit" @click="checkGuess">
@@ -47,10 +51,15 @@
     </div>
     <template #footer>
       <template v-if="stage > 1">
+<<<<<<< HEAD
         <FooterControls>
           <GameTimer :on="isGameOn" :stop-at="60" @timeout="hideList" />
           <RestartButton @click="restartGame" />
         </FooterControls>
+=======
+        <GameTimer :on="isGameOn" :stop-at="60" @timeout="hideList" />
+        <button class="btn btn--restart" @click="restartGame">restart</button>
+>>>>>>> origin/main
       </template>
     </template>
   </GameContainer>
@@ -58,8 +67,12 @@
 
 <script lang="ts" setup>
 import randomWords from 'random-words'
+<<<<<<< HEAD
 import FooterControls from '../Game/FooterControls.vue'
 import RestartButton from '../Game/RestartButton.vue'
+=======
+
+>>>>>>> origin/main
 const stage = ref(1)
 const isGameOn = ref(false)
 const selectedSettings = reactive({ listLength: 10, wordLength: 8 })
@@ -122,7 +135,11 @@ const restartGame = () => {
     background: $primary-dark;
     padding: 20px;
     align-items: center;
+<<<<<<< HEAD
     &:deep(.btn--restart) {
+=======
+    &::v-deep .btn--restart {
+>>>>>>> origin/main
       margin-left: 20px;
     }
   }

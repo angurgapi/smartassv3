@@ -65,16 +65,28 @@ watch(settings, (newValue) => {
     //   grid-template-columns: 1fr;
     // }
   }
+<<<<<<< HEAD
   &:deep(.text-input-container__input) {
+=======
+  &::v-deep .text-input-container__input {
+>>>>>>> origin/main
     width: 100%;
     font-size: 0.8em;
     padding: 6px 12px;
   }
+<<<<<<< HEAD
   &:deep(.dropdown) {
     width: 100%;
   }
 
   &:deep(.btn--primary) {
+=======
+  &::v-deep .dropdown {
+    width: 100%;
+  }
+
+  &::v-deep .btn--primary {
+>>>>>>> origin/main
     height: 56px;
     width: 100px;
     margin-top: 20px;

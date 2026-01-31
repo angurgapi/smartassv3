@@ -183,7 +183,11 @@ const restartGame = () => {
 }
 
 const calcTileSize = () => {
+<<<<<<< HEAD
   const pageContent = document.querySelector('.game-page__content')
+=======
+  const pageContent = document.querySelector('.page__content')
+>>>>>>> origin/main
   if (pageContent) {
     const pageContentHeight = pageContent.getBoundingClientRect().height
     const pageContentWidth = pageContent.getBoundingClientRect().width

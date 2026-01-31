@@ -25,9 +25,14 @@
 </template>
 
 <script lang="ts" setup>
+<<<<<<< HEAD
 const Vue3Lottie = defineAsyncComponent(() =>
   import('vue3-lottie').then((m) => ({ default: m.Vue3Lottie }))
 )
+=======
+import { Vue3Lottie } from 'vue3-lottie'
+const components = { Vue3Lottie }
+>>>>>>> origin/main
 const { t } = useLang()
 
 const getTextHtml = computed(() => {

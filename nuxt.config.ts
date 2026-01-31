@@ -15,7 +15,10 @@ export default defineNuxtConfig({
   css: [
     '~/assets/sass/vendor.scss',
     '~/assets/sass/app.scss',
+<<<<<<< HEAD
     '~/assets/css/tailwind.css',
+=======
+>>>>>>> origin/main
     // '~/assets/sass/modules/app.scss',
   ],
 
@@ -67,9 +70,12 @@ export default defineNuxtConfig({
           additionalData: '@import "@/assets/sass/modules/app.scss";',
         },
       },
+<<<<<<< HEAD
       postcss: {
         plugins: [require('tailwindcss'), require('autoprefixer')],
       },
+=======
+>>>>>>> origin/main
     },
   },
 

@@ -31,6 +31,7 @@ const emit = defineEmits<{
 
 <style lang="scss" scoped>
 .tab-btn {
+<<<<<<< HEAD
   cursor: pointer;
   color: #000;
   height: 32px;
@@ -38,6 +39,16 @@ const emit = defineEmits<{
   width: 100%;
   text-align: left;
   font-size: 24px;
+=======
+  letter-spacing: 1px;
+  font-size: 0.8em;
+  cursor: pointer;
+  color: #000;
+  height: 25px;
+  border: none;
+  width: 100%;
+  text-align: left;
+>>>>>>> origin/main
 
   &:hover {
     font-weight: 600;
@@ -45,7 +56,11 @@ const emit = defineEmits<{
   }
   &--active {
     // background-color: #fffade;
+<<<<<<< HEAD
     opacity: 0.7;
+=======
+    font-weight: 600;
+>>>>>>> origin/main
   }
 }
 </style>

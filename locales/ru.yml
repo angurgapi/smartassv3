@@ -44,7 +44,11 @@ pages:
     more: Еще
 
     bubblesTitle: Скоростная арифметика
+<<<<<<< HEAD
     bubblesDesc: Простые вычисления
+=======
+    bubblesDesc: Простые математические вычисления
+>>>>>>> origin/main
     wordTitle: Список слов
     wordDesc: Запомните слова из списка
     memoTitle: Мемо

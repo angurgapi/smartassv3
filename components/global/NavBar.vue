@@ -11,7 +11,11 @@
         <nuxt-link class="navbar__link" to="/games">{{
           $t('pages.games.nav')
         }}</nuxt-link>
+<<<<<<< HEAD
         <!-- <LanguageSwitcher /> -->
+=======
+        <LanguageSwitcher />
+>>>>>>> origin/main
         <!-- <ThemeSwitcher /> -->
       </div>
     </div>
@@ -33,19 +37,31 @@ onMounted(() => {
 <style lang="scss">
 .navbar {
   height: 48px;
+<<<<<<< HEAD
+=======
+  position: relative;
+>>>>>>> origin/main
   width: 100%;
   max-width: 100% !important;
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   justify-content: center;
+=======
+>>>>>>> origin/main
   transition: 0.3s all ease-in-out;
   padding: 0;
 
   &__inner {
     width: 100%;
     display: flex;
+<<<<<<< HEAD
     max-width: 1200px;
     padding: 12px 18px;
+=======
+    max-width: 1100px;
+    margin: auto;
+>>>>>>> origin/main
     justify-content: space-between;
     @media (max-width: 1150px) {
       padding: 0 18px;

@@ -76,7 +76,11 @@ const startGame = () => {
 
 const restartGame = () => {
   stage.value = 2
+<<<<<<< HEAD
   isGameOn.value = true
+=======
+  isGameOn.value = false
+>>>>>>> origin/main
   solvedExpressions.value = 0
   state.equations.length = 0
   populateExpressions()
@@ -149,7 +153,11 @@ const populateExpressions = () => {
 }
 
 const endGame = () => {
+<<<<<<< HEAD
   isGameOn.value = false
+=======
+  // isGameOn.value = false
+>>>>>>> origin/main
   // isGameOver.value = true
   // solvedExpressions.value = 0
   stage.value = 3
@@ -185,10 +193,17 @@ const endGame = () => {
   &__result {
     margin-bottom: 16px;
   }
+<<<<<<< HEAD
   &:deep(.timer) {
     margin-top: 20px;
   }
   &:deep(.btn--restart) {
+=======
+  &::v-deep .timer {
+    margin-top: 20px;
+  }
+  &::v-deep .btn--restart {
+>>>>>>> origin/main
     span {
       margin-left: 12px;
     }
