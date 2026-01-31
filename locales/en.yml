@@ -1,0 +1,99 @@
+components:
+  language_switcher:
+    change_language: change language
+  theme_switcher:
+    theme: theme
+    change_theme: change theme
+
+buttons:
+  goBtn: Go
+  skipBtn: Ready
+  checkBtn: Check
+  shuffleBtn: Shuffle
+  restartBtn: Restart
+
+index:
+  title: smartass
+  greeting: Hey stranger
+  time: Time to exercise <br/> your brain
+  comma: ''
+  reason_block:
+    title: Why even bother
+    memory: 'Do you often catch yourself <span class="highlighted">forgetting things</span>?<br/><span class="details">Memory training is the best pill there is.</span>'
+    anxiety: '<span class="highlighted">Fight anxiety</span><br/><span class="details">A fit mind is more likely to win over desctructive thoughts.</span>'
+    decision: 'Faster <span class="highlighted">decision-making</span><br/><span class="details">Navigate through life and perform better as a professional.</span>'
+    brain: 'Build more <span class="highlighted">neural pathways</span><br/><span class="details">Reduce the risk of dementia, make your future easier.</span>'
+    networking: 'Improve <span class="highlighted">communication</span><br/><span class="details">Interact with people more efficiently having a well-focused mind.</span>'
+  offer_block:
+    title: What's on the table
+    body:
+      Brain fitness is just like pilates or morning jogging<span>:</span> you succeed after <span class="highlighted">continious practice</span>.<br>
+      If you're ready to try, we offer several kinds of exercises.
+      Some of them are inspired by good old children <span class="highlighted">games</span>. Some are borrowed from the system developed by Ryuta Kawashima, a japanese <span class="highlighted">neuroscientist</span>.
+pages:
+  404:
+    title: page not found
+
+  games:
+    title: games
+    nav: games
+    description: Brain training games
+    general: General
+    memory: Memory
+    math: Math
+    more: More games
+
+    bubblesTitle: Speed arithmetics
+    bubblesDesc: Calculate the results of elementary math expressions
+    wordTitle: Word recall
+    wordDesc: Reproduce as many words from the list as you remember
+    memoTitle: Memo
+    memoDesc: Memorize the cards' positions and find a match for each card
+    simonTitle: Simon
+    simonDesc: Repeat the random sequence of light & sound signals
+    patternsTitle: Tiles
+    patternsDesc: Reproduce the pattern of tiles
+
+  words:
+    title: Word recall
+    rule: Memorize as many words as possible and write them down when the time's out
+    listLength: How many words?
+    wordLength: Max word length
+
+  patterns:
+    pageTitle: Repeat pattern
+    rule: Memorize the pattern of tiles and reproduce it after the timer stops
+    selectSize: Select grid size
+    originalPattern: Original pattern
+    userPattern: Your pattern
+    match: match
+
+  simon:
+    rule: Remember the sound signal sequence and repeat it
+    speed: Speed
+    level: Level
+
+  pairs:
+    title: Memo (pairs)
+    rule: Locate the pair for every picture
+    congrats: Congratulations! You've found all the pairs
+    attempt: Attempt
+    found: Found
+    pairsNum: paid, pairs, pairs
+
+  math:
+    title: Speed arithmetics
+    rule: Solve as many math expressions as you can. New ones will keep appearing until the time's up!
+    expressions: expression, expressions, expressions
+    solved: solved
+    hint: Enter any expression's result here
+    result: Your result is
+    seconds: seconds
+
+banners:
+  welcome: hello, welcome to %{app_name}!
+others:
+  learn_more: learn more
+  copy: copy
+  enabled: enabled
+  disabled: disabled
