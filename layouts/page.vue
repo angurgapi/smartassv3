@@ -5,13 +5,9 @@
       <slot />
     </div>
 
-<<<<<<< HEAD
-    <Footer />
-=======
     <slot name="footer">
       <Footer />
     </slot>
->>>>>>> origin/main
   </div>
 </template>
 

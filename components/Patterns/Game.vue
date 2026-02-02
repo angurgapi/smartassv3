@@ -88,14 +88,13 @@
     <!-- end of body -->
     <template v-if="stage > 1" #footer>
       <GameTimer :stop-at="60" :on="stage === 2" @timeout="startCheck" />
-      <button class="btn btn--restart" @click="restartGame">
-        {{ $t('buttons.restartBtn') }}
-      </button>
+      <RestartButton @click="restartGame" />
     </template>
   </GameContainer>
 </template>
 
 <script lang="ts" setup>
+import RestartButton from '../Game/RestartButton.vue'
 const tilesAmount = ref(16)
 
 const stage = ref(1)
@@ -183,11 +182,7 @@ const restartGame = () => {
 }
 
 const calcTileSize = () => {
-<<<<<<< HEAD
-  const pageContent = document.querySelector('.game-page__content')
-=======
-  const pageContent = document.querySelector('.page__content')
->>>>>>> origin/main
+  const pageContent = document.getElementById('gameContainer')
   if (pageContent) {
     const pageContentHeight = pageContent.getBoundingClientRect().height
     const pageContentWidth = pageContent.getBoundingClientRect().width

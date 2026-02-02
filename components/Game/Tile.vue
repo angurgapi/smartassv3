@@ -36,23 +36,13 @@ const getImgUrl = computed(() => {
 <style lang="scss" scoped>
 .game-card {
   width: 100%;
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  height: auto;
-=======
   display: grid;
   grid-template-columns: 1fr;
->>>>>>> origin/main
   box-shadow: $box-shadow--default;
   transition: 0.3s all ease-in-out;
   border-radius: 8px;
   background: $primary-dark;
   color: $white;
-<<<<<<< HEAD
-  overflow: hidden;
-=======
->>>>>>> origin/main
 
   &:hover {
     box-shadow: -1px 0px 10px 0px rgba(34, 60, 80, 0.27);

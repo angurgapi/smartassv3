@@ -1,12 +1,6 @@
 <template>
-  <div class="game-sidebar">
-<<<<<<< HEAD
-    <nuxt-link class="game-sidebar__back" to="/games">
-      {{ $t('pages.games.more') }}
-    </nuxt-link>
-=======
+  <div class="game-sidebar mt-[18px]">
     {{ $t('pages.games.more') }}
->>>>>>> origin/main
     <div class="game-sidebar__suggestions">
       <GameTile
         v-for="(game, i) in remainingGames"
@@ -43,36 +37,13 @@ const remainingGames = computed(() => {
 .game-sidebar {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  width: 250px;
+  // margin-top: 15px;
+  // padding: 30px 18px;
   &__suggestions {
-    margin-top: 18px;
-=======
-  // @media (max-width: 900px) {
-  //   display: none;
-  // }
-  margin-top: 15px;
-  padding: 30px 18px;
-  &__suggestions {
-    margin-top: 25px;
->>>>>>> origin/main
+    margin-top: 16px;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 16px;
   }
-<<<<<<< HEAD
-  &__link {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    text-decoration: none;
-    color: $primary-dark;
-    font-weight: 600;
-    &:visited {
-      color: $primary-dark;
-    }
-  }
-=======
->>>>>>> origin/main
 }
 </style>

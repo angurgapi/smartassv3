@@ -41,19 +41,11 @@ pages:
     general: General
     memory: Memory
     math: Math
-<<<<<<< HEAD
-    more: More games
-
-    bubblesTitle: Speed arithmetics
-    bubblesDesc: Calculate the results of elementary math expressions
-    wordTitle: Word recall
-=======
     more: More
 
     bubblesTitle: Speed arithmetics
     bubblesDesc: Calculate the results of elementary math expressions
-    wordTitle: Word list
->>>>>>> origin/main
+    wordTitle: Word recall
     wordDesc: Reproduce as many words from the list as you remember
     memoTitle: Memo
     memoDesc: Memorize the cards' positions and find a match for each card
@@ -63,11 +55,7 @@ pages:
     patternsDesc: Reproduce the pattern of tiles
 
   words:
-<<<<<<< HEAD
     title: Word recall
-=======
-    title: Word list
->>>>>>> origin/main
     rule: Memorize as many words as possible and write them down when the time's out
     listLength: How many words?
     wordLength: Max word length

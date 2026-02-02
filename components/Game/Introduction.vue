@@ -17,6 +17,8 @@
 </template>
 
 <script lang="ts" setup>
+defineEmits(['start'])
+
 const props = defineProps({
   bgImage: {
     type: String,

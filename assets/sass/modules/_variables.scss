@@ -1,6 +1,5 @@
 //colors
 $gradient-space: linear-gradient(
-<<<<<<< HEAD
   112.1deg,
   rgb(32, 38, 57) 11.4%,
   rgb(63, 76, 119) 70.2%
@@ -20,17 +19,6 @@ $gradient-green: linear-gradient(
 $primary-dark: #202639;
 $danger: #eb5234;
 $yellow-bg: rgba(247, 182, 2, 0.6);
-=======
-    112.1deg,
-    rgb(32, 38, 57) 11.4%,
-    rgb(63, 76, 119) 70.2%
-  );
-  $gradient-blue: linear-gradient(176deg, rgba(138,166,172,0.9528186274509804) 12%, rgba(9,42,77,0.4009978991596639) 76%);
-  $gradient-green:  linear-gradient(176deg, rgba(32,83,21,0.9528186274509804) 12%, rgba(90,130,97,1) 37%, rgba(5,96,25,0.4009978991596639) 76%, rgba(134,212,151,0.4009978991596639) 89%);
-$primary-dark: #202639;
-$danger: #eb5234;
-$yellow-bg: rgba(247, 182, 2, .6);
->>>>>>> origin/main
 $yellow-light: #f7ea68;
 $white: #fff;
 $gray: #8b9e90;
@@ -38,12 +26,9 @@ $bg-secondary: #c2b2f7;
 $bg-light: #fffade;
 $box-shadow--default: -1px 0px 8px 0px rgba(34, 60, 80, 0.17);
 $box-shadow--hard: 0 4px 9px 0 rgb(0 0 0 / 10%), 0 1px 4px 0 rgb(0 0 0 / 10%);
-<<<<<<< HEAD
 
 //breakpoints
 $breakpoint-small: 576px;
 $breakpoint-medium: 850px;
 $breakpoint-large: 992px;
 $breakpoint-extra-large: 1200px;
-=======
->>>>>>> origin/main

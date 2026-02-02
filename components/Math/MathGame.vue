@@ -12,6 +12,14 @@
             :key="index"
             :data="equation"
           />
+          <div
+            v-for="i in Math.max(
+              0,
+              (windowWidth > 600 ? 14 : 12) - state.equations.length
+            )"
+            :key="`placeholder-${i}`"
+            class="math-bubble-placeholder"
+          />
         </div>
         <div class="game-input">
           <FormTextInput
@@ -33,9 +41,7 @@
 
     <template #footer>
       <GameTimer :on="isGameOn" :stop-at="timerDuration" @timeout="endGame" />
-      <button class="btn btn--restart" @click="restartGame">
-        {{ $t('buttons.restartBtn') }}
-      </button>
+      <RestartButton @click="restartGame" />
       <div class="game__data f-col">
         <span v-if="solvedExpressions"
           >{{ $t('pages.math.solved') }} {{ solvedExpressions }}
@@ -48,12 +54,16 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
+import RestartButton from '../Game/RestartButton.vue'
 import { pluralizeCount } from '@/utils/pluralizeCount'
 
 const currentResult = ref('')
 const solvedExpressions = ref(0)
 const isGameOn = ref(false)
 const isGameOver = ref(false)
+const windowWidth = ref(
+  typeof window !== 'undefined' ? window.innerWidth : 1024
+)
 
 const timerDuration = 60
 
@@ -75,16 +85,12 @@ const startGame = () => {
 }
 
 const restartGame = () => {
-  stage.value = 2
-<<<<<<< HEAD
-  isGameOn.value = true
-=======
-  isGameOn.value = false
->>>>>>> origin/main
   solvedExpressions.value = 0
+  currentResult.value = ''
   state.equations.length = 0
-  populateExpressions()
+  isGameOn.value = false
   setTimeout(() => {
+    populateExpressions()
     isGameOn.value = true
   }, 100)
 }
@@ -153,11 +159,7 @@ const populateExpressions = () => {
 }
 
 const endGame = () => {
-<<<<<<< HEAD
   isGameOn.value = false
-=======
-  // isGameOn.value = false
->>>>>>> origin/main
   // isGameOver.value = true
   // solvedExpressions.value = 0
   stage.value = 3
@@ -193,24 +195,26 @@ const endGame = () => {
   &__result {
     margin-bottom: 16px;
   }
-<<<<<<< HEAD
-  &:deep(.timer) {
-    margin-top: 20px;
-  }
-  &:deep(.btn--restart) {
-=======
-  &::v-deep .timer {
-    margin-top: 20px;
-  }
-  &::v-deep .btn--restart {
->>>>>>> origin/main
-    span {
-      margin-left: 12px;
-    }
-  }
 }
 
 .disappear {
   opacity: 0;
+}
+
+.math-bubble-placeholder {
+  min-height: 60px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 </style>
