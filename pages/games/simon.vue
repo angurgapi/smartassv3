@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <h1 class="page__title">{{ $t('pages.games.simonTitle') }}</h1>
+    <h1 class="page__title">Simon</h1>
     <SimonGame />
   </NuxtLayout>
 </template>

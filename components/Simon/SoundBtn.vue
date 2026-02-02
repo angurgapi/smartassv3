@@ -17,7 +17,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'click', value: number): void
+  (e: 'click'): void
 }>()
 // const emit = defineEmits(['click'])
 </script>

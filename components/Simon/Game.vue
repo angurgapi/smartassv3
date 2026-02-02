@@ -2,13 +2,11 @@
   <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
       <template #rules>
-        {{ $t('pages.simon.rule') }}
+        Remember the sound signal sequence and repeat it
       </template>
       <template #settings>
         <div class="game-settings f-row">
-          <span class="game-settings__label">
-            {{ $t('pages.simon.speed') }}
-          </span>
+          <span class="game-settings__label"> Speed </span>
           <SimonSpeedControls v-model="gameSpeed" :options="speedOptions" />
         </div>
       </template>
@@ -27,12 +25,8 @@
 
     <template #footer>
       <template v-if="stage > 1">
-        <button class="btn btn--restart" @click="restartGame">
-          {{ $t('buttons.restartBtn') }}
-        </button>
-        <span class="game__data"
-          >{{ $t('pages.simon.level') }}: {{ level }}</span
-        >
+        <button class="btn btn--restart" @click="restartGame">Restart</button>
+        <span class="game__data">Level: {{ level }}</span>
       </template>
     </template>
   </GameContainer>

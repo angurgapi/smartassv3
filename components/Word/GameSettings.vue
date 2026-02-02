@@ -1,15 +1,11 @@
 <template>
   <div class="word-game-settings f-col">
     <div class="word-game-settings__row">
-      <span class="word-game-settings__label">{{
-        $t('pages.words.listLength')
-      }}</span>
+      <span class="word-game-settings__label">How many words?</span>
       <SelectList v-model="settings.listLength" :options="options" />
     </div>
     <div class="word-game-settings__row">
-      <span class="word-game-settings__label">{{
-        $t('pages.words.wordLength')
-      }}</span>
+      <span class="word-game-settings__label">Max word length</span>
       <FormTextInput v-model="settings.wordLength" type="number" />
     </div>
   </div>

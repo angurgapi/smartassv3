@@ -1,9 +1,7 @@
 <template>
   <section class="landing-section offer-section">
     <div class="landing-section__inner f-col">
-      <h2 class="landing-section__title">
-        {{ $t('index.offer_block.title') }}
-      </h2>
+      <h2 class="landing-section__title">How We'll Train</h2>
       <client-only>
         <vue3-lottie
           animation-link="/lottie/brain-bulb-with-gears.json"
@@ -15,11 +13,15 @@
         />
       </client-only>
 
-      <p class="landing-section__text" v-html="getTextHtml" />
+      <p class="landing-section__text">
+        Brain training is like pilates or morning runs: regular practice will
+        help you achieve success.<br />
+        If you're ready to try, we offer several types of exercises.<br />
+        Some are based on children's games. Others are borrowed from the methods
+        of Ryuta Kawashima, a Japanese neuroscientist.
+      </p>
 
-      <nuxt-link class="btn btn--primary mt-20" to="/games">{{
-        $t('buttons.goBtn')
-      }}</nuxt-link>
+      <nuxt-link class="btn btn--primary mt-20" to="/games">Start</nuxt-link>
     </div>
   </section>
 </template>
@@ -27,12 +29,6 @@
 <script lang="ts" setup>
 import { Vue3Lottie } from 'vue3-lottie'
 const components = { Vue3Lottie }
-const { t } = useLang()
-
-const getTextHtml = computed(() => {
-  const bodyText = t('index.offer_block.body')
-  return bodyText.replace(/\n/g, '<br>')
-})
 </script>
 
 <style lang="scss" scoped>

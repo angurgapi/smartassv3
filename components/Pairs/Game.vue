@@ -1,7 +1,7 @@
 <template>
   <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
-      <template #rules> {{ $t('pages.pairs.rule') }} </template>
+      <template #rules> Locate the pair for every picture </template>
     </GameIntroduction>
     <div v-else class="game__action">
       <div v-if="stage === 2" class="game-grid">
@@ -14,22 +14,17 @@
           @click="checkFlip(index)"
         />
       </div>
-      <span v-else class="game__congrats">{{
-        $t('pages.pairs.congrats')
-      }}</span>
+      <span v-else class="game__congrats"
+        >Congratulations! You've found all the pairs</span
+      >
     </div>
     <template #footer>
       <template v-if="stage > 1">
         <GameTimer :on="isTimerOn" />
-        <button class="btn btn--restart" @click="restartGame">
-          {{ $t('buttons.restartBtn') }}
-        </button>
+        <button class="btn btn--restart" @click="restartGame">Restart</button>
         <div class="game__data f-col">
-          <span>{{ $t('pages.pairs.attempt') }}: {{ currentAttemptNum }}</span>
-          <span
-            >{{ $t('pages.pairs.found') }}: {{ nailedPairsNum }}
-            {{ pluralizedCount }}</span
-          >
+          <span>Attempt: {{ currentAttemptNum }}</span>
+          <span>Found: {{ nailedPairsNum }} {{ pluralizedCount }}</span>
         </div>
       </template>
     </template>
@@ -139,9 +134,8 @@ const restartGame = () => {
   shuffledImagesArray.value = []
   startGame()
 }
-const { t } = useLang()
 const pluralizedCount = computed(() => {
-  return pluralizeCount(nailedPairsNum.value, t('pages.pairs.pairsNum'))
+  return pluralizeCount(nailedPairsNum.value, 'pair, pairs')
 })
 </script>
 

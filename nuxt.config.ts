@@ -34,9 +34,7 @@ export default defineNuxtConfig({
   // modules
   modules: [
     'unplugin-icons/nuxt',
-    '@intlify/nuxt3',
     '@pinia/nuxt',
-    '@nuxt/content',
     '@vueuse/nuxt',
     '@nuxtjs/svg-sprite',
   ],
@@ -78,16 +76,6 @@ export default defineNuxtConfig({
     // global transition
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
-  },
-
-  // localization - i18n config
-  intlify: {
-    localeDir: 'locales',
-    vueI18n: {
-      locale: 'en',
-      fallbackLocale: 'en',
-      availableLocales: ['en', 'ru'],
-    },
   },
 
   // vueuse

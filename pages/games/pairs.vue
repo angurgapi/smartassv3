@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <h1 class="page__title">{{ $t('pages.pairs.title') }}</h1>
+    <h1 class="page__title">Memo (pairs)</h1>
     <PairsGame />
   </NuxtLayout>
 </template>

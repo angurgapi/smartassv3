@@ -1,44 +1,44 @@
 import { ref, Ref, watch } from 'vue'
 import { GameData } from '~~/types/GameData'
 
-export function createGamesArray(t: any) {
+export function createGamesArray() {
   return [
     {
       id: 1,
-      title: t('pages.games.memoTitle'),
-      description: t('pages.games.memoDesc'),
+      title: 'Memory Pairs',
+      description: 'Find matching pairs of cards',
       image: 'pairs',
       url: 'pairs',
       type: 'memory',
     },
     {
       id: 2,
-      title: t('pages.games.simonTitle'),
-      description: t('pages.games.simonDesc'),
+      title: 'Simon',
+      description: 'Repeat the sequence of colors',
       image: 'simon',
       url: 'simon',
       type: 'memory',
     },
     {
       id: 3,
-      title: t('pages.games.wordTitle'),
-      description: t('pages.games.wordDesc'),
+      title: 'Word List',
+      description: 'Remember and type words from a list',
       url: 'words',
       image: 'wordlist',
       type: 'memory',
     },
     {
       id: 4,
-      title: t('pages.games.bubblesTitle'),
-      description: t('pages.games.bubblesDesc'),
+      title: 'Quick Math',
+      description: 'Solve simple math equations',
       url: 'math',
       image: 'math',
       type: 'math',
     },
     {
       id: 5,
-      title: t('pages.games.patternsTitle'),
-      description: t('pages.games.patternsDesc'),
+      title: 'Pattern Match',
+      description: 'Remember and recreate patterns',
       url: 'patterns',
       type: 'memory',
       image: 'patterns',

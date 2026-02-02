@@ -3,8 +3,11 @@
     <div class="hero__content f-col">
       <Brain />
       <div class="hero__text">
-        <h1 class="hero__title">{{ $t('index.greeting') }}</h1>
-        <p class="hero__description" v-html="$t('index.time')" />
+        <h1 class="hero__title">Hey stranger</h1>
+        <p
+          class="hero__description"
+          v-html="'Time to exercise <br/> your brain'"
+        />
       </div>
     </div>
   </div>

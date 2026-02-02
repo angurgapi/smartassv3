@@ -8,9 +8,7 @@
         </nuxt-link>
       </div>
       <div class="navbar__right f-row">
-        <nuxt-link class="navbar__link" to="/games">{{
-          $t('pages.games.nav')
-        }}</nuxt-link>
+        <nuxt-link class="navbar__link" to="/games">Games</nuxt-link>
         <!-- <LanguageSwitcher /> -->
         <!-- <ThemeSwitcher /> -->
       </div>

@@ -1,7 +1,10 @@
 <template>
   <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
-      <template #rules> {{ $t('pages.words.rule') }} </template>
+      <template #rules>
+        Memorize as many words as possible and write them down when the time's
+        out
+      </template>
       <template #settings>
         <WordGameSettings @input="changeSettings" />
       </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="game-sidebar mt-[18px]">
-    {{ $t('pages.games.more') }}
+    More Games
     <div class="game-sidebar__suggestions">
       <GameTile
         v-for="(game, i) in remainingGames"
@@ -15,15 +15,9 @@
 <script lang="ts" setup>
 import { createGamesArray } from '@/mixins/gamesArray'
 
-const { t } = useLang()
-const games = ref(createGamesArray(t))
+const games = ref(createGamesArray())
 const route = useRoute()
-const localeSetting = useState<string>('locale.setting')
 const gameRoute = route.fullPath.replace('/games/', '')
-
-watch(localeSetting, () => {
-  games.value = createGamesArray(t)
-})
 
 const remainingGames = computed(() => {
   return games.value

@@ -1,7 +1,9 @@
 <template>
   <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
-      <template #rules> {{ $t('pages.math.rule') }} </template>
+      <template #rules>
+        Solve simple math equations before time runs out
+      </template>
     </GameIntroduction>
 
     <div v-else class="game__action">
@@ -28,14 +30,14 @@
             type="number"
           />
           <span class="game-input__hint">
-            {{ $t('pages.math.hint') }}
+            Type the correct answer and press enter
           </span>
         </div>
       </div>
       <div v-if="stage === 3" class="game__congrats">
-        {{ $t('pages.math.result') }}: {{ solvedExpressions }}
-        {{ pluralizedCount }} / {{ timerDuration }}
-        {{ $t('pages.math.seconds') }}
+        Result: {{ solvedExpressions }} {{ pluralizedCount }} in
+        {{ timerDuration }}
+        seconds
       </div>
     </div>
 
@@ -44,8 +46,7 @@
       <RestartButton @click="restartGame" />
       <div class="game__data f-col">
         <span v-if="solvedExpressions"
-          >{{ $t('pages.math.solved') }} {{ solvedExpressions }}
-          {{ pluralizedCount }}</span
+          >Solved {{ solvedExpressions }} {{ pluralizedCount }}</span
         >
       </div>
     </template>
@@ -69,13 +70,11 @@ const timerDuration = 60
 
 const stage = ref(1)
 
-const { t } = useLang()
-
 const state = reactive({
   equations: [] as any[],
 })
 const pluralizedCount = computed(() => {
-  return pluralizeCount(solvedExpressions.value, t('pages.math.expressions'))
+  return pluralizeCount(solvedExpressions.value, 'expression, expressions')
 })
 
 const startGame = () => {
@@ -90,8 +89,7 @@ const restartGame = () => {
   state.equations.length = 0
   isGameOn.value = false
   setTimeout(() => {
-    populateExpressions()
-    isGameOn.value = true
+    startGame()
   }, 100)
 }
 

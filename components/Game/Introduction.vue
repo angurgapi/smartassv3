@@ -9,9 +9,7 @@
         <slot name="settings"></slot>
       </div>
 
-      <button class="btn btn--primary" @click="$emit('start')">
-        {{ $t('buttons.goBtn') }}
-      </button>
+      <button class="btn btn--primary" @click="$emit('start')">Go</button>
     </div>
   </div>
 </template>

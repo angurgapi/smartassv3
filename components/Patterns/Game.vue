@@ -2,13 +2,11 @@
   <GameContainer :stage="stage">
     <GameIntroduction v-if="stage === 1" @start="startGame">
       <template #rules>
-        {{ $t('pages.patterns.rule') }}
+        Memorize the pattern of tiles and reproduce it after the timer stops
       </template>
       <template #settings>
         <div class="game-settings f-row">
-          <span class="game-settings__label">
-            {{ $t('pages.patterns.selectSize') }}
-          </span>
+          <span class="game-settings__label"> Select grid size </span>
           <SelectList v-model="tilesAmount" :options="options" />
         </div>
       </template>
@@ -26,11 +24,11 @@
         <div class="game__row">
           <button class="btn btn--secondary btn--block" @click="shuffleArray">
             <SvgIcon class="btn-icon" name="shuffle" />
-            {{ $t('buttons.shuffleBtn') }}
+            Shuffle
           </button>
           <button class="btn btn--secondary btn--block" @click="startCheck">
             <SvgIcon class="btn-icon" name="forward" />
-            {{ $t('buttons.skipBtn') }}
+            Ready
           </button>
         </div>
       </template>
@@ -48,7 +46,7 @@
           class="btn btn--primary pattern-grid__compare"
           @click="comparePatterns"
         >
-          {{ $t('buttons.checkBtn') }}
+          Check
         </button>
       </template>
       <template v-if="stage === 4">
@@ -62,9 +60,7 @@
                 :is-filled="computerArray[index] === 1"
               />
             </div>
-            <span class="game__hint">
-              {{ $t('pages.patterns.originalPattern') }}</span
-            >
+            <span class="game__hint"> Original pattern</span>
           </div>
           <div class="f-col">
             <div class="pattern-grid pattern-grid--copy" :class="getGridClass">
@@ -75,13 +71,11 @@
                 :is-filled="userArray[index] === 1"
               />
             </div>
-            <span class="game__hint">
-              {{ $t('pages.patterns.userPattern') }}</span
-            >
+            <span class="game__hint"> Your pattern</span>
           </div>
         </div>
         <span v-if="matchPercentage" class="game__result"
-          >{{ matchPercentage }}% {{ $t('pages.patterns.match') }}</span
+          >{{ matchPercentage }}% match</span
         >
       </template>
     </div>

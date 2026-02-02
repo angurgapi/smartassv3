@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <h1 class="page__title">{{ $t('pages.math.title') }}</h1>
+    <h1 class="page__title">Speed arithmetics</h1>
     <MathGame />
   </NuxtLayout>
 </template>

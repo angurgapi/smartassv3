@@ -6,19 +6,19 @@
           <template #navigation>
             <TabButton
               :active="currentTab === 'general'"
-              :title="$t('pages.games.general')"
+              title="General"
               value="general"
               @click="changeTab"
             />
             <TabButton
               :active="currentTab === 'memory'"
-              :title="$t('pages.games.memory')"
+              title="Memory"
               value="memory"
               @click="changeTab"
             />
             <TabButton
               :active="currentTab === 'math'"
-              :title="$t('pages.games.math')"
+              title="Math"
               value="math"
               @click="changeTab"
             />
@@ -56,24 +56,16 @@ definePageMeta({
 })
 
 // composable
-const { t } = useLang()
-
-const games = ref(createGamesArray(t))
-
-const localeSetting = useState<string>('locale.setting')
-
-watch(localeSetting, () => {
-  games.value = createGamesArray(t)
-})
+const games = ref(createGamesArray())
 
 const currentTab = ref('general')
 
 useHead(() => ({
-  title: capitalize(t('pages.games.title')),
+  title: 'Games',
   meta: [
     {
       name: 'description',
-      content: t('pages.games.description'),
+      content: 'Brain training games',
     },
   ],
 }))
