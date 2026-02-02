@@ -7,10 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    'IconUil:clock': typeof import('~icons/uil/clock')['default']
-    'IconUil:laptop': typeof import('~icons/uil/laptop')['default']
-    'IconUil:moon': typeof import('~icons/uil/moon')['default']
-    'IconUil:sun': typeof import('~icons/uil/sun')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
